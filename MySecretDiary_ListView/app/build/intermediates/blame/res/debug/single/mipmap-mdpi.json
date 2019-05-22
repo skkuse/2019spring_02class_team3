@@ -1,0 +1,10 @@
+[
+    {
+        "merged": "C:\\androidproject\\ListViewSample\\ListViewSample\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_launcher_round.png",
+        "source": "C:\\androidproject\\ListViewSample\\ListViewSample\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\androidproject\\ListViewSample\\ListViewSample\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-mdpi\\ic_launcher.png",
+        "source": "C:\\androidproject\\ListViewSample\\ListViewSample\\app\\src\\main\\res\\mipmap-mdpi\\ic_launcher.png"
+    }
+]

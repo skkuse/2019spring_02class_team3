@@ -1,0 +1,87 @@
+-- Merging decision tree log ---
+manifest
+ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:2:1-21:12
+	package
+		ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:3:11-48
+		INJECTED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml
+		INJECTED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml
+		INJECTED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml
+		INJECTED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml
+application
+ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:5:5-19:19
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\차미경\.android\build-cache\83ac017cb63a67ea93562f03f963c7410833d1c1\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\차미경\.android\build-cache\29b77189c124f6c0d6dd1ebd30430aa8b4cd41a6\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\차미경\.android\build-cache\d166c38b8ee2b653620b58660275fbe51c8a19f0\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\차미경\.android\build-cache\bb965fe49ceeea1ad8a10ff3ce8c398e006f36cc\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\차미경\.android\build-cache\23784d4a167324bd480ed153b5ab8dce7afcf88c\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\차미경\.android\build-cache\3869ad0935fc807f2585302b6da46e317f07b940\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\차미경\.android\build-cache\6fe95e212dc4593926016032825853e0f915e87b\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\차미경\.android\build-cache\7296c38e91ebdd7c1491e9c40d50e7b49382d0de\output\AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\차미경\.android\build-cache\00433a5544f8ec1b723ccf9d8a3242e1bd9fb108\output\AndroidManifest.xml:29:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\차미경\.android\build-cache\0e385bc4c5a684ed60a724bf7e7b1dc0f51beaa5\output\AndroidManifest.xml:9:5-20
+	android:label
+		ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:8:9-41
+	android:supportsRtl
+		ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:10:9-35
+	android:roundIcon
+		ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:9:9-54
+	android:allowBackup
+		ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:6:9-35
+	android:icon
+		ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:7:9-43
+	android:theme
+		ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:11:9-40
+activity#twomix.co.kr.listviewsample.MainActivity
+ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:12:9-18:20
+	android:name
+		ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:12:19-47
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:13:13-17:29
+action#android.intent.action.MAIN
+ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:14:17-68
+	android:name
+		ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:14:25-66
+category#android.intent.category.LAUNCHER
+ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:16:17-76
+	android:name
+		ADDED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml:16:27-74
+uses-sdk
+INJECTED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\차미경\.android\build-cache\83ac017cb63a67ea93562f03f963c7410833d1c1\output\AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\차미경\.android\build-cache\29b77189c124f6c0d6dd1ebd30430aa8b4cd41a6\output\AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\차미경\.android\build-cache\d166c38b8ee2b653620b58660275fbe51c8a19f0\output\AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\차미경\.android\build-cache\bb965fe49ceeea1ad8a10ff3ce8c398e006f36cc\output\AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\차미경\.android\build-cache\23784d4a167324bd480ed153b5ab8dce7afcf88c\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\차미경\.android\build-cache\3869ad0935fc807f2585302b6da46e317f07b940\output\AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\차미경\.android\build-cache\6fe95e212dc4593926016032825853e0f915e87b\output\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\차미경\.android\build-cache\7296c38e91ebdd7c1491e9c40d50e7b49382d0de\output\AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\차미경\.android\build-cache\00433a5544f8ec1b723ccf9d8a3242e1bd9fb108\output\AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support.constraint:constraint-layout:1.0.2] C:\Users\차미경\.android\build-cache\0e385bc4c5a684ed60a724bf7e7b1dc0f51beaa5\output\AndroidManifest.xml:5:5-7:41
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:25.3.1] C:\Users\차미경\.android\build-cache\83ac017cb63a67ea93562f03f963c7410833d1c1\output\AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml
+		INJECTED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml
+		INJECTED from C:\androidproject\ListViewSample\ListViewSample\app\src\main\AndroidManifest.xml
+meta-data#android.support.VERSION
+ADDED from [com.android.support:appcompat-v7:25.3.1] C:\Users\차미경\.android\build-cache\83ac017cb63a67ea93562f03f963c7410833d1c1\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-v4:25.3.1] C:\Users\차미경\.android\build-cache\29b77189c124f6c0d6dd1ebd30430aa8b4cd41a6\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\차미경\.android\build-cache\d166c38b8ee2b653620b58660275fbe51c8a19f0\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.1] C:\Users\차미경\.android\build-cache\bb965fe49ceeea1ad8a10ff3ce8c398e006f36cc\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.1] C:\Users\차미경\.android\build-cache\23784d4a167324bd480ed153b5ab8dce7afcf88c\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.1] C:\Users\차미경\.android\build-cache\3869ad0935fc807f2585302b6da46e317f07b940\output\AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.1] C:\Users\차미경\.android\build-cache\6fe95e212dc4593926016032825853e0f915e87b\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.1] C:\Users\차미경\.android\build-cache\7296c38e91ebdd7c1491e9c40d50e7b49382d0de\output\AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-compat:25.3.1] C:\Users\차미경\.android\build-cache\00433a5544f8ec1b723ccf9d8a3242e1bd9fb108\output\AndroidManifest.xml:25:5-27:34
+	android:value
+		ADDED from [com.android.support:appcompat-v7:25.3.1] C:\Users\차미경\.android\build-cache\83ac017cb63a67ea93562f03f963c7410833d1c1\output\AndroidManifest.xml:27:9-31
+	android:name
+		ADDED from [com.android.support:appcompat-v7:25.3.1] C:\Users\차미경\.android\build-cache\83ac017cb63a67ea93562f03f963c7410833d1c1\output\AndroidManifest.xml:26:9-47

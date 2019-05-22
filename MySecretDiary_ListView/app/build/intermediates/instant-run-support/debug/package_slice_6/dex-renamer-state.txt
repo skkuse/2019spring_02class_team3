@@ -1,0 +1,4 @@
+#Wed May 22 02:56:42 KST 2019
+base.0=C\:\\androidproject\\ListViewSample\\ListViewSample\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_6
+renamed.0=classes.dex
+file.0=C\:\\androidproject\\ListViewSample\\ListViewSample\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\5\\slice_6\\classes.dex

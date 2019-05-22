@@ -1,0 +1,7 @@
+#Wed May 22 02:56:43 KST 2019
+base.0=C\:\\androidproject\\ListViewSample\\ListViewSample\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_3777bc0b7a107ac032bd9928de06629aa810fed4
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\androidproject\\ListViewSample\\ListViewSample\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_1e1e0f7553aa6f963ef39cc1ea5be35aa7640dd0\\classes.dex
+base.1=C\:\\androidproject\\ListViewSample\\ListViewSample\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_1e1e0f7553aa6f963ef39cc1ea5be35aa7640dd0
+file.0=C\:\\androidproject\\ListViewSample\\ListViewSample\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_3777bc0b7a107ac032bd9928de06629aa810fed4\\classes.dex
