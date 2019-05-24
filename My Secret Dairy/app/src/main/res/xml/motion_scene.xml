@@ -1,0 +1,738 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:motion="http://schemas.android.com/apk/res-auto">
+
+    //1 to 2 transition
+    <Transition
+            motion:constraintSetStart="@id/s1"
+            motion:constraintSetEnd="@id/s2"
+            motion:duration="700"/>
+
+    //2 to 1 transition
+    <Transition
+            motion:constraintSetStart="@id/s2"
+            motion:constraintSetEnd="@id/s1"
+            motion:duration="700"/>
+
+    //2 to 3 transition
+    <Transition
+            motion:constraintSetStart="@id/s2"
+            motion:constraintSetEnd="@id/s3"
+            motion:duration="700"/>
+
+    //3 to 2 transition
+    <Transition
+            motion:constraintSetStart="@id/s3"
+            motion:constraintSetEnd="@id/s2"
+            motion:duration="700"/>
+
+    //3 to 4 transition
+    <Transition
+            motion:constraintSetStart="@id/s3"
+            motion:constraintSetEnd="@id/s4"
+            motion:duration="700"/>
+
+    //4 to 3 transition
+    <Transition
+            motion:constraintSetStart="@id/s4"
+            motion:constraintSetEnd="@id/s3"
+            motion:duration="700"/>
+
+    //4 to 5 transition
+    <Transition
+            motion:constraintSetStart="@id/s4"
+            motion:constraintSetEnd="@id/s5"
+            motion:duration="700"/>
+
+    //5 to 4 transition
+    <Transition
+            motion:constraintSetStart="@id/s5"
+            motion:constraintSetEnd="@id/s4"
+            motion:duration="700"/>
+
+    //5 to 6 transition
+    <Transition
+            motion:constraintSetStart="@id/s5"
+            motion:constraintSetEnd="@id/s6"
+            motion:duration="700"/>
+
+    //6 to 5 transition
+    <Transition
+            motion:constraintSetStart="@id/s6"
+            motion:constraintSetEnd="@id/s5"
+            motion:duration="700"/>
+
+    //6 to 7 transition
+    <Transition
+            motion:constraintSetStart="@id/s6"
+            motion:constraintSetEnd="@id/s7"
+            motion:duration="700"/>
+
+    //7 to 6 transition
+    <Transition
+            motion:constraintSetStart="@id/s7"
+            motion:constraintSetEnd="@id/s6"
+            motion:duration="700"/>
+
+    //7 to 8 transition
+    <Transition
+            motion:constraintSetStart="@id/s7"
+            motion:constraintSetEnd="@id/s8"
+            motion:duration="700"/>
+
+    //8 to 7 transition
+    <Transition
+            motion:constraintSetStart="@id/s8"
+            motion:constraintSetEnd="@id/s7"
+            motion:duration="700"/>
+
+    //8 to 9 transition
+    <Transition
+            motion:constraintSetStart="@id/s8"
+            motion:constraintSetEnd="@id/s9"
+            motion:duration="700"/>
+
+    //9 to 8 transition
+    <Transition
+            motion:constraintSetStart="@id/s9"
+            motion:constraintSetEnd="@id/s8"
+            motion:duration="700"/>
+
+    //9 to 10 transition
+    <Transition
+            motion:constraintSetStart="@id/s9"
+            motion:constraintSetEnd="@id/s10"
+            motion:duration="700"/>
+
+    //10 to 9 transition
+    <Transition
+            motion:constraintSetStart="@id/s10"
+            motion:constraintSetEnd="@id/s9"
+            motion:duration="700"/>
+
+    //10 to 11 transition
+    <Transition
+            motion:constraintSetStart="@id/s10"
+            motion:constraintSetEnd="@id/s11"
+            motion:duration="700"/>
+
+    //11 to 10 transition
+    <Transition
+            motion:constraintSetStart="@id/s11"
+            motion:constraintSetEnd="@id/s10"
+            motion:duration="700"/>
+
+    //11 to 12 transition
+    <Transition
+            motion:constraintSetStart="@id/s11"
+            motion:constraintSetEnd="@id/s12"
+            motion:duration="700"/>
+
+    //12 to 11 transition
+    <Transition
+            motion:constraintSetStart="@id/s12"
+            motion:constraintSetEnd="@id/s11"
+            motion:duration="700"/>
+
+    //states
+    <ConstraintSet android:id="@+id/s1">
+        <Constraint android:id="@+id/v1">
+            <Transform motion:translationX="0dp" />
+        </Constraint>
+
+        <Constraint android:id="@+id/v2">
+            <Transform motion:rotationY="-15" motion:translationX="250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v3">
+            <Transform motion:rotationY="-15" motion:translationX="500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v4">
+            <Transform motion:rotationY="-15" motion:translationX="750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v5">
+            <Transform motion:rotationY="-15" motion:translationX="1000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v6">
+            <Transform motion:rotationY="-15" motion:translationX="1250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v7">
+            <Transform motion:rotationY="-15" motion:translationX="1500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v8">
+            <Transform motion:rotationY="-15" motion:translationX="1750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v9">
+            <Transform motion:rotationY="-15" motion:translationX="2000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v10">
+            <Transform motion:rotationY="-15" motion:translationX="2250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v11">
+            <Transform motion:rotationY="-15" motion:translationX="2500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v12">
+            <Transform motion:rotationY="-15" motion:translationX="2750dp"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/s2">
+        <Constraint android:id="@+id/v1">
+            <Transform motion:rotationY="15" motion:translationX="-250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v2">
+            <Transform motion:rotationY="0" motion:translationX="0dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v3">
+            <Transform motion:rotationY="-15" motion:translationX="250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v4">
+            <Transform motion:rotationY="-15" motion:translationX="500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v5">
+            <Transform motion:rotationY="-15" motion:translationX="750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v6">
+            <Transform motion:rotationY="-15" motion:translationX="1000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v7">
+            <Transform motion:rotationY="-15" motion:translationX="1250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v8">
+            <Transform motion:rotationY="-15" motion:translationX="1500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v9">
+            <Transform motion:rotationY="-15" motion:translationX="1750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v10">
+            <Transform motion:rotationY="-15" motion:translationX="2000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v11">
+            <Transform motion:rotationY="-15" motion:translationX="2250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v12">
+            <Transform motion:rotationY="-15" motion:translationX="2500dp"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/s3">
+        <Constraint android:id="@+id/v1">
+            <Transform motion:rotationY="15" motion:translationX="-500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v2">
+            <Transform motion:rotationY="15" motion:translationX="-250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v3">
+            <Transform motion:rotationY="0" motion:translationX="0dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v4">
+            <Transform motion:rotationY="-15" motion:translationX="250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v5">
+            <Transform motion:rotationY="-15" motion:translationX="500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v6">
+            <Transform motion:rotationY="-15" motion:translationX="750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v7">
+            <Transform motion:rotationY="-15" motion:translationX="1000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v8">
+            <Transform motion:rotationY="-15" motion:translationX="1250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v9">
+            <Transform motion:rotationY="-15" motion:translationX="1500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v10">
+            <Transform motion:rotationY="-15" motion:translationX="1750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v11">
+            <Transform motion:rotationY="-15" motion:translationX="2000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v12">
+            <Transform motion:rotationY="-15" motion:translationX="2250dp"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/s4">
+        <Constraint android:id="@+id/v1">
+            <Transform motion:rotationY="15" motion:translationX="-750dp" />
+        </Constraint>
+
+        <Constraint android:id="@+id/v2">
+            <Transform motion:rotationY="15" motion:translationX="-500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v3">
+            <Transform motion:rotationY="15" motion:translationX="-250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v4">
+            <Transform motion:rotationY="0" motion:translationX="0dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v5">
+            <Transform motion:rotationY="-15" motion:translationX="250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v6">
+            <Transform motion:rotationY="-15" motion:translationX="500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v7">
+            <Transform motion:rotationY="-15" motion:translationX="750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v8">
+            <Transform motion:rotationY="-15" motion:translationX="1000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v9">
+            <Transform motion:rotationY="-15" motion:translationX="1250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v10">
+            <Transform motion:rotationY="-15" motion:translationX="1500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v11">
+            <Transform motion:rotationY="-15" motion:translationX="1750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v12">
+            <Transform motion:rotationY="-15" motion:translationX="2000dp"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/s5">
+        <Constraint android:id="@+id/v1">
+            <Transform motion:rotationY="15" motion:translationX="-1000dp" />
+        </Constraint>
+
+        <Constraint android:id="@+id/v2">
+            <Transform motion:rotationY="15" motion:translationX="-750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v3">
+            <Transform motion:rotationY="15" motion:translationX="-500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v4">
+            <Transform motion:rotationY="15" motion:translationX="-250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v5">
+            <Transform motion:rotationY="0" motion:translationX="0dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v6">
+            <Transform motion:rotationY="-15" motion:translationX="250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v7">
+            <Transform motion:rotationY="-15" motion:translationX="500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v8">
+            <Transform motion:rotationY="-15" motion:translationX="750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v9">
+            <Transform motion:rotationY="-15" motion:translationX="1000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v10">
+            <Transform motion:rotationY="-15" motion:translationX="1250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v11">
+            <Transform motion:rotationY="-15" motion:translationX="1500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v12">
+            <Transform motion:rotationY="-15" motion:translationX="1750dp"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/s6">
+        <Constraint android:id="@+id/v1">
+            <Transform motion:rotationY="15" motion:translationX="-1000dp" />
+        </Constraint>
+
+        <Constraint android:id="@+id/v2">
+            <Transform motion:rotationY="15" motion:translationX="-750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v3">
+            <Transform motion:rotationY="15" motion:translationX="-500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v4">
+            <Transform motion:rotationY="15" motion:translationX="-500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v5">
+            <Transform motion:rotationY="15" motion:translationX="-250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v6">
+            <Transform motion:rotationY="0" motion:translationX="0dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v7">
+            <Transform motion:rotationY="-15" motion:translationX="250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v8">
+            <Transform motion:rotationY="-15" motion:translationX="500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v9">
+            <Transform motion:rotationY="-15" motion:translationX="750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v10">
+            <Transform motion:rotationY="-15" motion:translationX="1000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v11">
+            <Transform motion:rotationY="-15" motion:translationX="1250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v12">
+            <Transform motion:rotationY="-15" motion:translationX="1500dp"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/s7">
+        <Constraint android:id="@+id/v1">
+            <Transform motion:rotationY="15" motion:translationX="-1500dp" />
+        </Constraint>
+
+        <Constraint android:id="@+id/v2">
+            <Transform motion:rotationY="15" motion:translationX="-1250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v3">
+            <Transform motion:rotationY="15" motion:translationX="-1000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v4">
+            <Transform motion:rotationY="15" motion:translationX="-750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v5">
+            <Transform motion:rotationY="15" motion:translationX="-500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v6">
+            <Transform motion:rotationY="15" motion:translationX="-250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v7">
+            <Transform motion:rotationY="0" motion:translationX="0dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v8">
+            <Transform motion:rotationY="-15" motion:translationX="250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v9">
+            <Transform motion:rotationY="-15" motion:translationX="500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v10">
+            <Transform motion:rotationY="-15" motion:translationX="750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v11">
+            <Transform motion:rotationY="-15" motion:translationX="1000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v12">
+            <Transform motion:rotationY="-15" motion:translationX="1250dp"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/s8">
+        <Constraint android:id="@+id/v1">
+            <Transform motion:rotationY="15" motion:translationX="-1750dp" />
+        </Constraint>
+
+        <Constraint android:id="@+id/v2">
+            <Transform motion:rotationY="15" motion:translationX="-1500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v3">
+            <Transform motion:rotationY="15" motion:translationX="-1250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v4">
+            <Transform motion:rotationY="15" motion:translationX="-1000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v5">
+            <Transform motion:rotationY="15" motion:translationX="-750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v6">
+            <Transform motion:rotationY="15" motion:translationX="-500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v7">
+            <Transform motion:rotationY="15" motion:translationX="-250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v8">
+            <Transform motion:rotationY="0" motion:translationX="0dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v9">
+            <Transform motion:rotationY="-15" motion:translationX="250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v10">
+            <Transform motion:rotationY="-15" motion:translationX="500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v11">
+            <Transform motion:rotationY="-15" motion:translationX="750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v12">
+            <Transform motion:rotationY="-15" motion:translationX="1000dp"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/s9">
+        <Constraint android:id="@+id/v1">
+            <Transform motion:rotationY="15" motion:translationX="-2000dp" />
+        </Constraint>
+
+        <Constraint android:id="@+id/v2">
+            <Transform motion:rotationY="15" motion:translationX="-1750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v3">
+            <Transform motion:rotationY="15" motion:translationX="-1500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v4">
+            <Transform motion:rotationY="15" motion:translationX="-1250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v5">
+            <Transform motion:rotationY="-15" motion:translationX="-1000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v6">
+            <Transform motion:rotationY="15" motion:translationX="-750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v7">
+            <Transform motion:rotationY="15" motion:translationX="-500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v8">
+            <Transform motion:rotationY="15" motion:translationX="-250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v9">
+            <Transform motion:rotationY="0" motion:translationX="0dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v10">
+            <Transform motion:rotationY="-15" motion:translationX="250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v11">
+            <Transform motion:rotationY="-15" motion:translationX="500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v12">
+            <Transform motion:rotationY="-15" motion:translationX="750dp"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/s10">
+        <Constraint android:id="@+id/v1">
+            <Transform motion:rotationY="15" motion:translationX="-2250dp" />
+        </Constraint>
+
+        <Constraint android:id="@+id/v2">
+            <Transform motion:rotationY="15" motion:translationX="-2000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v3">
+            <Transform motion:rotationY="15" motion:translationX="-1750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v4">
+            <Transform motion:rotationY="15" motion:translationX="-1500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v5">
+            <Transform motion:rotationY="15" motion:translationX="-1250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v6">
+            <Transform motion:rotationY="15" motion:translationX="-1000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v7">
+            <Transform motion:rotationY="15" motion:translationX="-750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v8">
+            <Transform motion:rotationY="15" motion:translationX="-500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v9">
+            <Transform motion:rotationY="15" motion:translationX="-250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v10">
+            <Transform motion:rotationY="0" motion:translationX="0dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v11">
+            <Transform motion:rotationY="-15" motion:translationX="250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v12">
+            <Transform motion:rotationY="-15" motion:translationX="500dp"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/s11">
+        <Constraint android:id="@+id/v1">
+            <Transform motion:rotationY="15" motion:translationX="-2500dp" />
+        </Constraint>
+
+        <Constraint android:id="@+id/v2">
+            <Transform motion:rotationY="15" motion:translationX="-2250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v3">
+            <Transform motion:rotationY="15" motion:translationX="-2000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v4">
+            <Transform motion:rotationY="15" motion:translationX="-1750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v5">
+            <Transform motion:rotationY="15" motion:translationX="-1500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v6">
+            <Transform motion:rotationY="15" motion:translationX="-1250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v7">
+            <Transform motion:rotationY="15" motion:translationX="-1000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v8">
+            <Transform motion:rotationY="15" motion:translationX="-750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v9">
+            <Transform motion:rotationY="15" motion:translationX="-500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v10">
+            <Transform motion:rotationY="15" motion:translationX="-250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v11">
+            <Transform motion:rotationY="0" motion:translationX="0dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v12">
+            <Transform motion:rotationY="-15" motion:translationX="250dp"/>
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/s12">
+        <Constraint android:id="@+id/v1">
+            <Transform motion:rotationY="15" motion:translationX="-2750dp" />
+        </Constraint>
+
+        <Constraint android:id="@+id/v2">
+            <Transform motion:rotationY="15" motion:translationX="-2500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v3">
+            <Transform motion:rotationY="15" motion:translationX="-2250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v4">
+            <Transform motion:rotationY="15" motion:translationX="-2000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v5">
+            <Transform motion:rotationY="15" motion:translationX="-1750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v6">
+            <Transform motion:rotationY="15" motion:translationX="-1500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v7">
+            <Transform motion:rotationY="15" motion:translationX="-1250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v8">
+            <Transform motion:rotationY="15" motion:translationX="-1000dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v9">
+            <Transform motion:rotationY="15" motion:translationX="-750dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v10">
+            <Transform motion:rotationY="15" motion:translationX="-500dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v11">
+            <Transform motion:rotationY="15" motion:translationX="-250dp"/>
+        </Constraint>
+
+        <Constraint android:id="@+id/v12">
+            <Transform motion:rotationY="0" motion:translationX="0dp"/>
+        </Constraint>
+    </ConstraintSet>
+</MotionScene>
