@@ -4,6 +4,8 @@ import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
@@ -36,6 +38,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParser;
+import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -66,11 +69,11 @@ public class MainActivity extends AppCompatActivity {
     Double longitude = 0.0;
     Double latitude = 0.0;
     Weatheritem parse_data;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         Button button1 = (Button)(findViewById(R.id.button1));
         editText1 = (EditText)(findViewById(R.id.editText1));
         editText2 = (EditText)(findViewById(R.id.editText2));
@@ -79,11 +82,10 @@ public class MainActivity extends AppCompatActivity {
         Button getlocation = (Button)(findViewById(R.id.button6));
         mPostReference = FirebaseDatabase.getInstance().getReference();
         mStorageRef = FirebaseStorage.getInstance().getReference();
-
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(MainActivity.this, MainActivity.class);
+                intent = new Intent(MainActivity.this, CalendarView.class);
                 subheading = editText1.getText().toString();
                 textdiary = editText2.getText().toString();
                 day = textView1.getText().toString();
