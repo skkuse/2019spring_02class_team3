@@ -109,6 +109,7 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     postFirebaseDatabase(true);
                     startActivity(intent);
+                    finish();//view가 쌓이는 것을 막기 위해서 finish를 사용하여 종료시켜줌.
                 }
             }
         });
@@ -142,14 +143,8 @@ public class MainActivity extends AppCompatActivity {
         else{
 //            Toast.makeText(MainActivity.this, "LocationManager is ready!", Toast.LENGTH_SHORT).show();
         }
-        lm.requestLocationUpdates(LocationManager.GPS_PROVIDER,
-                100,
-                0,
-                gpsLocationListener);
-//        lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER,
-//                100,
-//                0,
-//                networkLocationListener);
+        //lm.requestLocationUpdates(LocationManager.GPS_PROVIDER, 100, 0, gpsLocationListener);//GPS를 통한 경우보다 NETWORK를 통한 위치정보가 더 정확하여, NETWORK를 사용합니다.
+        lm.requestLocationUpdates(LocationManager.NETWORK_PROVIDER, 100, 0, networkLocationListener);
 
         MyAsyncTask mProcessTask = new MyAsyncTask();
         mProcessTask.execute();
