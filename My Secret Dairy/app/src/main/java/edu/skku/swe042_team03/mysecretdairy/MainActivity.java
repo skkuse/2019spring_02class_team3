@@ -70,6 +70,11 @@ public class MainActivity extends AppCompatActivity {
     Double latitude = 0.0;
     Weatheritem parse_data;
 
+    ///////////////////추가//////////////////
+    int cal_year;   // 캘린더 날짜 받을 변수
+    int cal_month;   // 캘린더 날짜 받을 변수
+    int cal_day;   // 캘린더 날짜 받을 변수
+    String id = "";         // id 받을 변수
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -82,10 +87,19 @@ public class MainActivity extends AppCompatActivity {
         Button getlocation = (Button)(findViewById(R.id.button6));
         mPostReference = FirebaseDatabase.getInstance().getReference();
         mStorageRef = FirebaseStorage.getInstance().getReference();
+
+        /////////////추가//////////////////////////////////
+        intent = getIntent();
+        id = intent.getExtras().getString("id");                // id 받기
+        cal_year = intent.getExtras().getInt("cal_year");    // 캘린더 날짜 받기
+        cal_month = intent.getExtras().getInt("cal_month");   // 캘린더 날짜 받기
+        cal_day = intent.getExtras().getInt("cal_day");    // 캘린더 날짜 받기
+        textView1.setText(cal_year+"-"+cal_month+"-"+cal_day);
+
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                intent = new Intent(MainActivity.this, CalendarView.class);
+                intent = new Intent(MainActivity.this, MainActivity.class);
                 subheading = editText1.getText().toString();
                 textdiary = editText2.getText().toString();
                 day = textView1.getText().toString();

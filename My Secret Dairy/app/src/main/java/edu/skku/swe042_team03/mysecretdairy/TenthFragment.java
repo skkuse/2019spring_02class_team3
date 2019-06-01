@@ -1,6 +1,8 @@
 package edu.skku.swe042_team03.mysecretdairy;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -8,10 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
-
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
-
+import com.prolificinteractive.materialcalendarview.OnDateLongClickListener;
 import java.util.Calendar;
 
 // Show October Calendar
@@ -26,6 +27,11 @@ public class TenthFragment extends Fragment {
     private int dayofmonth;
     EditText editText;
     Calendar cal = Calendar.getInstance();
+    Intent intent;
+    private int cal_year;
+    private int cal_month;
+    private int cal_day;
+    private static String getId;
     // Inflate the view for the fragment based on layout XML
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -59,6 +65,21 @@ public class TenthFragment extends Fragment {
                         .setMinimumDate(CalendarDay.from(getYear, 10,1))
                         .setMaximumDate(CalendarDay.from(getYear, 10, dayofmonth))
                         .commit();
+            }
+        });
+        materialcalendarview.setOnDateLongClickListener(new OnDateLongClickListener() {
+            @Override
+            public void onDateLongClick(@NonNull MaterialCalendarView materialCalendarView, @NonNull CalendarDay calendarDay) {
+                materialCalendarView.clearSelection();
+                cal_year = calendarDay.getYear();
+                cal_month = calendarDay.getMonth();
+                cal_day = calendarDay.getDay();
+                intent = new Intent(getActivity(), MainActivity.class);
+                intent.putExtra("cal_year",cal_year);
+                intent.putExtra("cal_month",cal_month);
+                intent.putExtra("cal_day",cal_day);
+                intent.putExtra("id",getId);
+                startActivity(intent);
             }
         });
         return view;
