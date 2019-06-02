@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         cal_year = intent.getExtras().getInt("cal_year");    // 캘린더 날짜 받기
         cal_month = intent.getExtras().getInt("cal_month");   // 캘린더 날짜 받기
         cal_day = intent.getExtras().getInt("cal_day");    // 캘린더 날짜 받기
-        textView1.setText(cal_year+"-"+cal_month+"-"+cal_day);
+        textView1.setText(cal_year + "/" + cal_month + "/" + cal_day);
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         };
-        mPostReference.child("/" ).addValueEventListener(postListener);
+        mPostReference.child("/" + cal_year).child("/" + cal_month).child("/" + cal_day).child("/").addValueEventListener(postListener);
     }
     public void postFirebaseDatabase(boolean add){
         Map<String, Object> childUpdates = new HashMap<>();
@@ -188,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
             DailyRecord post = new DailyRecord(subheading, textdiary, countryNow, cityNow, weatherNow, degreeNow);//추후 이미지 파일 연결
             postValues = post.toMap();
         }
-        childUpdates.put("/" + day, postValues);
+        childUpdates.put("/" + day + "/record", postValues);
         mPostReference.updateChildren(childUpdates);
         clearC();
     }
