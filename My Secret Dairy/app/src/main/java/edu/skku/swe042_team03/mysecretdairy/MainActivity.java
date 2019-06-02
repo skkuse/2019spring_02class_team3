@@ -100,10 +100,13 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 intent = new Intent(MainActivity.this, MainActivity.class);
+                intent.putExtra("cal_year",cal_year);
+                intent.putExtra("cal_month",cal_month);
+                intent.putExtra("cal_day",cal_day);
+                intent.putExtra("id",id);
                 subheading = editText1.getText().toString();
                 textdiary = editText2.getText().toString();
                 day = textView1.getText().toString();
-
                 if ((subheading.length() + day.length() +textdiary.length()) < 5) {
                     Toast.makeText(MainActivity.this, "공란을 채워주세요.", Toast.LENGTH_SHORT).show();
                 } else {
