@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="45dp"
+        android:layout_marginEnd="44dp"
+        android:text="New ID"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editText_NewID"
+        app:layout_constraintEnd_toStartOf="@+id/editText_NewID"
+        app:layout_constraintStart_toStartOf="@+id/textView7" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="34dp"
+        android:text="New Password"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editText_NewPassword"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="Confirm Password"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editText_Confirm"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="21dp"
+        android:text="E-mail address"
+        app:layout_constraintBaseline_toBaselineOf="@+id/editText_Email"
+        app:layout_constraintEnd_toStartOf="@+id/editText_Email" />
+
+    <Button
+        android:id="@+id/button_Signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="15dp"
+        android:text="Sign Up!"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView_ConfirmID" />
+
+    <Button
+        android:id="@+id/button_Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="74dp"
+        android:layout_marginEnd="32dp"
+        android:text="Cancel"
+        app:layout_constraintEnd_toEndOf="@+id/textView_ConfirmID"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Email" />
+
+    <EditText
+        android:id="@+id/editText_NewID"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="102dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/editText_NewPassword"
+        app:layout_constraintStart_toStartOf="@+id/editText_NewPassword"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/editText_NewPassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="22dp"
+        android:layout_marginTop="63dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toEndOf="@+id/textView6"
+        app:layout_constraintTop_toBottomOf="@+id/editText_NewID" />
+
+    <EditText
+        android:id="@+id/editText_Confirm"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:ems="10"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@+id/editText_NewPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editText_NewPassword" />
+
+    <EditText
+        android:id="@+id/editText_Email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="19dp"
+        android:ems="10"
+        android:inputType="textEmailAddress"
+        app:layout_constraintStart_toStartOf="@+id/textView_ConfirmID"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Confirm" />
+
+    <Button
+        android:id="@+id/button_ConfirmID"
+        android:layout_width="105dp"
+        android:layout_height="42dp"
+        android:layout_marginTop="56dp"
+        android:layout_marginBottom="55dp"
+        android:text="Confirm ID"
+        app:layout_constraintBottom_toBottomOf="@+id/editText_NewPassword"
+        app:layout_constraintEnd_toEndOf="@+id/editText_NewPassword"
+        app:layout_constraintStart_toStartOf="@+id/editText_NewPassword"
+        app:layout_constraintTop_toTopOf="@+id/editText_NewID" />
+
+    <TextView
+        android:id="@+id/textView_ConfirmID"
+        android:layout_width="215dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_Cancel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editText_Email" />
+
+</android.support.constraint.ConstraintLayout>

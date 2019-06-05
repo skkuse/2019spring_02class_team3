@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "827831310643",
+    "firebase_url": "https://login-aa893.firebaseio.com",
+    "project_id": "login-aa893",
+    "storage_bucket": "login-aa893.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827831310643:android:687f27fe6dba813b",
+        "android_client_info": {
+          "package_name": "com.example.diarylogin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "827831310643-5ccc104lqvdtn16g2j0kbj4r9ocinpcg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.diarylogin",
+            "certificate_hash": "65220488349f614bdbdd049a7bfce68e6c1dad7c"
+          }
+        },
+        {
+          "client_id": "827831310643-5u9rac515f5oqmpokt0f704b4erpht1g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyClKsx2wsHM-KO1BQMLQbzylok0FLl1yho"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "827831310643-5u9rac515f5oqmpokt0f704b4erpht1g.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
