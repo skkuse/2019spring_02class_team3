@@ -1,15 +1,25 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
+//밑 configurations.all 감정분석위해 추가
+configurations.all {
+    resolutionStrategy {
+        dependencySubstitution {
+            substitute module('org.threeten:threetenbp:1.3.3') with module('com.jakewharton.threetenabp:threetenabp:1.2.0')
+        }
+    }
+}
+
 android {
     compileSdkVersion 26
     defaultConfig {
         applicationId "edu.skku.swe042_team03.mysecretdairy"
-        minSdkVersion 19
+        minSdkVersion 21 // 19에서 21로 바꿈 감정분석
         targetSdkVersion 26
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true // 감정분석위해 추가
     }
     buildTypes {
         release {
@@ -20,6 +30,13 @@ android {
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    //밑 packageOptions 감정분석위해 추가
+    // exclude files that are not needed from the cloud client libraries
+    packagingOptions {
+        exclude 'META-INF/LICENSE'
+        exclude 'META-INF/INDEX.LIST'
     }
 }
 
@@ -38,7 +55,20 @@ dependencies {
     implementation "gun0912.ted:tedpermission:2.1.0"
     implementation 'com.squareup.okhttp3:okhttp:3.14.1'
     implementation 'com.google.code.gson:gson:2.8.5'
+    implementation 'io.grpc:grpc-okhttp:1.9.0'// include the language API 감정분석위해 추가 , 1.10.1 -> 1.9.0
+    implementation 'com.google.cloud:google-cloud-language:1.22.0'// include the language API 감정분석위해 추가
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
+    androidTestImplementation 'com.android.support.test:rules:1.0.2' // 감정분석위해 추가
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
+
+//밑 task,preBuild 감정추가
+task copySecretKey(type: Copy) {
+    File secretKey = file "$System.env.GOOGLE_APPLICATION_CREDENTIALS"
+    from secretKey.getParent()
+    include secretKey.getName()
+    into 'src/main/res/raw'
+    rename secretKey.getName(), "credential.json"
+}
+preBuild.dependsOn(copySecretKey)

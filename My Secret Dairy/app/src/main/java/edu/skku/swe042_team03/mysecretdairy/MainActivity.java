@@ -48,6 +48,12 @@ import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import com.google.auth.oauth2.GoogleCredentials; //감정분석위해 추가
+import com.google.cloud.language.v1.Document; //감정분석위해 추가
+import com.google.cloud.language.v1.LanguageServiceClient; //감정분석위해 추가
+import com.google.cloud.language.v1.LanguageServiceSettings; //감정분석위해 추가
+import com.google.cloud.language.v1.Sentiment; //감정분석위해 추가
+import java.io.IOException; //감정분석위해 추가
 
 public class MainActivity extends AppCompatActivity {
 
@@ -57,6 +63,7 @@ public class MainActivity extends AppCompatActivity {
     ImageView imageView1;
     Intent intent;
     String day = "", subheading="", textdiary = "";
+    String textdiary2 = ""; //감정분석위해추가
     ArrayList<String> photodiaty;
     EditText editText1;
     EditText editText2;
@@ -69,6 +76,10 @@ public class MainActivity extends AppCompatActivity {
     Double longitude = 0.0;
     Double latitude = 0.0;
     Weatheritem parse_data;
+
+    private LanguageServiceClient mLanguageClient; //감정분석위해 추가
+    private Document document2; //감정분석위해 추가
+    private Sentiment sentiment; //감정분석위해 추가
 
     ///////////////////추가//////////////////
     int cal_year;   // 캘린더 날짜 받을 변수
@@ -152,7 +163,33 @@ public class MainActivity extends AppCompatActivity {
         MyAsyncTask mProcessTask = new MyAsyncTask();
         mProcessTask.execute();
 
+        //아래 try 감정분석위해 추가
+        // create the language client
+        try {
+            // NOTE: The line below uses an embedded credential (res/raw/credential.json).
+            //       You should not package a credential with real application.
+            //       Instead, you should get a credential securely from a server.
+            mLanguageClient = LanguageServiceClient.create(
+                    LanguageServiceSettings.newBuilder()
+                            .setCredentialsProvider(() ->
+                                    GoogleCredentials.fromStream(getApplicationContext()
+                                            .getResources()
+                                            .openRawResource(R.raw.credential)))
+                            .build());
+        } catch (IOException e) {
+            throw new IllegalStateException("Unable to create a language client", e);
+        }
+
     }
+
+    //아래 public void onSentimetClicked(View view) : 감정분석위해 추가
+    public void onSentimentClicked(View view){
+        textdiary2 = editText2.getText().toString();
+        document2 = Document.newBuilder().setContent(textdiary2).setType(Document.Type.PLAIN_TEXT).build(); //감정분석위해 추가
+        sentiment = mLanguageClient.analyzeSentiment(document2).getDocumentSentiment();//감정분석위해 추가
+        Toast.makeText(getApplicationContext(), String.valueOf(sentiment.getScore()), Toast.LENGTH_LONG).show();
+    }
+
     public void getFirebaseDatabase() {
         final ValueEventListener postListener = new ValueEventListener() {
             @Override
