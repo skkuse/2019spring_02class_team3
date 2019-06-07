@@ -65,6 +65,7 @@ public class NinethFragment extends Fragment {
                         .setMinimumDate(CalendarDay.from(getYear, 9,1))
                         .setMaximumDate(CalendarDay.from(getYear, 9, dayofmonth))
                         .commit();
+                materialcalendarview.setDateSelected(CalendarDay.from(getYear,getMonth+1,getDay), true);
             }
         });
         materialcalendarview.setOnDateLongClickListener(new OnDateLongClickListener() {

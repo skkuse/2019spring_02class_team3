@@ -65,6 +65,7 @@ public class EighthFragment extends Fragment {
                         .setMinimumDate(CalendarDay.from(getYear, 8,1))
                         .setMaximumDate(CalendarDay.from(getYear, 8, dayofmonth))
                         .commit();
+                materialcalendarview.setDateSelected(CalendarDay.from(getYear,getMonth+1,getDay), true);
             }
         });
         materialcalendarview.setOnDateLongClickListener(new OnDateLongClickListener() {

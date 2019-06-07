@@ -68,9 +68,9 @@ public class FirstFragment extends Fragment {
                         .setMinimumDate(CalendarDay.from(getYear, 1,1))
                         .setMaximumDate(CalendarDay.from(getYear, 1, dayofmonth))
                         .commit();
+                materialcalendarview.setDateSelected(CalendarDay.from(getYear,getMonth+1,getDay), true);
             }
         });
-
         // event for what date clicked long
         materialcalendarview.setOnDateLongClickListener(new OnDateLongClickListener() {
             @Override

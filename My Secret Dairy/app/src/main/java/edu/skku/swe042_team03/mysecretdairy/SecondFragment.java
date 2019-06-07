@@ -20,7 +20,7 @@ import java.util.Calendar;
 
 public class SecondFragment extends Fragment {
     final static CalendarView calendarView = new CalendarView();
-    private MaterialCalendarView materialcalendarview2;
+    private MaterialCalendarView materialcalendarview;
     private static int getYear;
     private static int getMonth;
     private static int getDay;
@@ -42,11 +42,11 @@ public class SecondFragment extends Fragment {
         getDay = calendarView.day;
         cal.set(getYear, Calendar.FEBRUARY, 1);
         dayofmonth = cal.getActualMaximum(Calendar.DATE);
-        materialcalendarview2 = view.findViewById(R.id.calendar2);
-        materialcalendarview2.setTopbarVisible(false);
+        materialcalendarview = view.findViewById(R.id.calendar2);
+        materialcalendarview.setTopbarVisible(false);
         editText = view.findViewById(R.id.edit);
         editText.setText(getYear + " " + getMonth + " " + getDay);
-        materialcalendarview2.state().edit()
+        materialcalendarview.state().edit()
                 .setMinimumDate(CalendarDay.from(getYear, 1,1))
                 .setMaximumDate(CalendarDay.from(getYear, 1, dayofmonth))
                 .commit();
@@ -61,13 +61,14 @@ public class SecondFragment extends Fragment {
 
             @Override
             public void afterTextChanged(Editable editable) {
-                materialcalendarview2.state().edit()
+                materialcalendarview.state().edit()
                         .setMinimumDate(CalendarDay.from(getYear, 2,1))
                         .setMaximumDate(CalendarDay.from(getYear, 2, dayofmonth))
                         .commit();
+                materialcalendarview.setDateSelected(CalendarDay.from(getYear,getMonth+1,getDay), true);
             }
         });
-        materialcalendarview2.setOnDateLongClickListener(new OnDateLongClickListener() {
+        materialcalendarview.setOnDateLongClickListener(new OnDateLongClickListener() {
             @Override
             public void onDateLongClick(@NonNull MaterialCalendarView materialCalendarView, @NonNull CalendarDay calendarDay) {
                 materialCalendarView.clearSelection();

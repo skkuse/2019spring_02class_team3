@@ -65,6 +65,7 @@ public class TwelfthFragment extends Fragment {
                         .setMinimumDate(CalendarDay.from(getYear, 12,1))
                         .setMaximumDate(CalendarDay.from(getYear, 12, dayofmonth))
                         .commit();
+                materialcalendarview.setDateSelected(CalendarDay.from(getYear,getMonth+1,getDay), true);
             }
         });
         materialcalendarview.setOnDateLongClickListener(new OnDateLongClickListener() {
