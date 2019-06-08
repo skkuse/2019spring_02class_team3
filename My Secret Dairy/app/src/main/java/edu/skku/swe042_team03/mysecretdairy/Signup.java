@@ -37,7 +37,6 @@ public class Signup extends AppCompatActivity {
     EditText newEmail;
     TextView confirmedID;
     static String tempID = "";
-
     boolean add = false;
     static boolean correctid = false;
     static boolean correctpassword = false;
@@ -45,7 +44,6 @@ public class Signup extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signup);
-
 
         Button confirmID = (Button)findViewById(R.id.button_ConfirmID);
         Button cancel = (Button)findViewById(R.id.button_Cancel);
@@ -55,31 +53,14 @@ public class Signup extends AppCompatActivity {
         confirmedPassword = (EditText)findViewById(R.id.editText_Confirm);
         newEmail = (EditText)findViewById(R.id.editText_Email);
         confirmedID = (TextView)findViewById(R.id.textView_ConfirmID);
-
         mPostReference = FirebaseDatabase.getInstance().getReference();
-
-
 
         confirmID.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-
                 inputID = newID.getText().toString();
-
                 getFirebaseDatabase();
-
-                if (correctid == true)
-                {
-                    confirmedID.setText("You can use this ID");
-                    tempID = newID.getText().toString();
-                }
-                else
-                {
-                    confirmedID.setText("The ID is already exists");
-                }
-
             }
         });
-
 
         cancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -91,50 +72,39 @@ public class Signup extends AppCompatActivity {
 
         signup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-
                 confirmPassword = confirmedPassword.getText().toString();
                 inputPassword = newPassword.getText().toString();
 
-                if (confirmPassword.equals(inputPassword))
-                {
+                if (confirmPassword.equals(inputPassword)) {
                     correctpassword = true;
                 }
-                else
-                {
+                else {
                     correctpassword = false;
                 }
 
-
                 intent_Signup = new Intent(Signup.this, Login.class);
-
                 inputID = newID.getText().toString();
                 inputPassword = newPassword.getText().toString();
                 inputEmail = newEmail.getText().toString();
 
-                if (tempID.equals(inputID) == false)
-                {
+                if (tempID.equals(inputID) == false) {
                     correctid = false;
                 }
-
 
                 if (correctpassword == true && correctid == true) {
                     postFirebaseDatabase(true);
                     startActivity(intent_Signup);
                     finish();//view가 쌓이는 것을 막기 위해서 finish를 사용하여 종료시켜줌.
                 }
-                else if (correctpassword == true && correctid == false)
-                {
+                else if (correctpassword == true && correctid == false) {
                     confirmedID.setText("You should confirm your ID");
                 }
-                else if (correctid == true && correctpassword == false)
-                {
+                else if (correctid == true && correctpassword == false) {
                     confirmedID.setText("Your passwords are different");
                 }
-                else
-                {
+                else {
                     confirmedID.setText("You should confirm your ID");
                 }
-
             }
         });
 
@@ -146,14 +116,15 @@ public class Signup extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     String key = postSnapshot.getKey();
-                    if (key.equals(inputID))
-                    {
+                    if (key.equals(inputID)) {
                         correctid = false;
+                        confirmedID.setText("The ID is already exists");
                         return;
                     }
                 }
                 correctid = true;
-
+                confirmedID.setText("You can use this ID");
+                tempID = newID.getText().toString();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -161,9 +132,6 @@ public class Signup extends AppCompatActivity {
         };
         mPostReference.child("id_list").addValueEventListener(postListener);
     }
-
-
-
 
     public void postFirebaseDatabase(boolean add){
         Map<String, Object> childUpdates = new HashMap<>();

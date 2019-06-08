@@ -216,7 +216,7 @@ public class MainActivity extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         };
-        mPostReference.child("/" + cal_year).child("/" + cal_month).child("/" + cal_day).child("/").addValueEventListener(postListener);
+        mPostReference.child("/" + id).child("/" + cal_year).child("/" + cal_month).child("/" + cal_day).child("/").addValueEventListener(postListener);
     }
 
     public void postFirebaseDatabase(boolean add){
@@ -226,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
             DailyRecord post = new DailyRecord(subheading, textdiary, countryNow, cityNow, weatherNow, degreeNow);//추후 이미지 파일 연결
             postValues = post.toMap();
         }
-        childUpdates.put("/" + day + "/record", postValues);
+        childUpdates.put("/" + id + "/" + day + "/record", postValues);
         mPostReference.updateChildren(childUpdates);
         clearC();
     }
