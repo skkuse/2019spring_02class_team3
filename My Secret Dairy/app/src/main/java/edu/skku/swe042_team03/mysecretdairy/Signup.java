@@ -159,21 +159,24 @@ public class Signup extends AppCompatActivity {
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         };
-        mPostReference.addValueEventListener(postListener);
+        mPostReference.child("id_list").addValueEventListener(postListener);
     }
+
+
 
 
     public void postFirebaseDatabase(boolean add){
         Map<String, Object> childUpdates = new HashMap<>();
         Map<String, Object> postValues = null;
         if(add){
-            signupinfo post = new signupinfo(inputID, inputPassword, inputEmail);
+            SignupInfo post = new SignupInfo(inputID, inputPassword, inputEmail);
             postValues = post.toMap();
         }
-        childUpdates.put("/"+inputID, postValues);
+        childUpdates.put("/id_list/"+inputID, postValues);
         mPostReference.updateChildren(childUpdates);
         clearET();
     }
+
     public void clearET () {
         inputID = "";
         inputPassword = "";

@@ -218,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
         };
         mPostReference.child("/" + cal_year).child("/" + cal_month).child("/" + cal_day).child("/").addValueEventListener(postListener);
     }
+
     public void postFirebaseDatabase(boolean add){
         Map<String, Object> childUpdates = new HashMap<>();
         Map<String, Object> postValues = null;
@@ -235,6 +236,7 @@ public class MainActivity extends AppCompatActivity {
         textdiary = "";
         //photodiaty.clear();//추후 이미지 파일 연결
     }
+
     final LocationListener networkLocationListener = new LocationListener() {
         @Override
         public void onLocationChanged(Location location) {
@@ -252,6 +254,7 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onProviderDisabled(String provider) {}
     };
+
     final LocationListener gpsLocationListener = new LocationListener() {
         public void onLocationChanged(Location location) {
             String provider = location.getProvider();
@@ -266,6 +269,7 @@ public class MainActivity extends AppCompatActivity {
         public void onProviderEnabled(String provider) {}
         public void onProviderDisabled(String provider) {}
     };
+
     public class MyAsyncTask extends AsyncTask<String, Void, Weatheritem> {
         OkHttpClient client = new OkHttpClient();
         @Override
