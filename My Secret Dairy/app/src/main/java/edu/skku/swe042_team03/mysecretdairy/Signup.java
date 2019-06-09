@@ -58,7 +58,26 @@ public class Signup extends AppCompatActivity {
         confirmID.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 inputID = newID.getText().toString();
-                getFirebaseDatabase();
+                for (int index = 0; index < inputID.length(); index++)
+                {
+                    if ((inputID.charAt(index) >= '0' && inputID.charAt(index) <= '9' ) ||
+                            (inputID.charAt(index) >= 'A' && inputID.charAt(index) <= 'Z') ||
+                            (inputID.charAt(index) >= 'a' && inputID.charAt(index) <= 'z'))
+                    {
+                    }
+                    else {
+                        confirmedID.setText("Your ID cannot contain special characters(&,%,#)");
+                        return;
+                    }
+                }
+
+                if (inputID.length() > 5 && inputID.length() < 16) {
+                    getFirebaseDatabase();
+                }
+                else
+                {
+                    confirmedID.setText("Your ID should be in 6~15 length");
+                }
             }
         });
 
@@ -67,44 +86,64 @@ public class Signup extends AppCompatActivity {
                 intent_cancel = new Intent(Signup.this, Login.class);
                 startActivity(intent_cancel);
                 finish();//view가 쌓이는 것을 막기 위해서 finish를 사용하여 종료시켜줌.
-                }
+            }
         });
 
         signup.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 confirmPassword = confirmedPassword.getText().toString();
                 inputPassword = newPassword.getText().toString();
-
-                if (confirmPassword.equals(inputPassword)) {
-                    correctpassword = true;
-                }
-                else {
-                    correctpassword = false;
-                }
-
                 intent_Signup = new Intent(Signup.this, Login.class);
                 inputID = newID.getText().toString();
-                inputPassword = newPassword.getText().toString();
                 inputEmail = newEmail.getText().toString();
 
-                if (tempID.equals(inputID) == false) {
-                    correctid = false;
+                if (!confirmPassword.equals(inputPassword)) {
+                    confirmedID.setText("Your Passwords are different");
+                    return;
+                }
+                if (inputPassword.length() < 6 || inputPassword.length() > 15) {
+                    confirmedID.setText("Your Password should be in 6~15 length");
+                    return;
                 }
 
-                if (correctpassword == true && correctid == true) {
-                    postFirebaseDatabase(true);
-                    startActivity(intent_Signup);
-                    finish();//view가 쌓이는 것을 막기 위해서 finish를 사용하여 종료시켜줌.
-                }
-                else if (correctpassword == true && correctid == false) {
+                if (tempID.equals(inputID) == false) {
                     confirmedID.setText("You should confirm your ID");
+                    return;
                 }
-                else if (correctid == true && correctpassword == false) {
-                    confirmedID.setText("Your passwords are different");
+
+                if ( (howmanychars(inputEmail, '@') == 1 ) &&
+                        (inputEmail.indexOf("@") != 0) &&
+                        (howmanychars(inputEmail, '.') == 1) &&
+                        (inputEmail.indexOf("@") <  inputEmail.indexOf(".")) &&
+                        (inputEmail.charAt(inputEmail.length()-1) != '.')
+                )
+                {
+                    for (int index = 0; index < inputEmail.length(); index++)
+                    {
+                        if ((inputEmail.charAt(index) >= '0' && inputEmail.charAt(index) <= '9' ) ||
+                                (inputEmail.charAt(index) >= 'A' && inputEmail.charAt(index) <= 'Z') ||
+                                (inputEmail.charAt(index) >= 'a' && inputEmail.charAt(index) <= 'z') ||
+                                (inputEmail.charAt(index) == '@' || inputEmail.charAt(index) == '.' )
+                        )
+                        {
+                        }
+                        else
+                        {
+                            confirmedID.setText("You should check your E-mail");
+                            return;
+                        }
+                    }
                 }
-                else {
-                    confirmedID.setText("You should confirm your ID");
+                else
+                {
+                    confirmedID.setText("You should check your E-mail");
+                    return;
                 }
+
+                postFirebaseDatabase(true);
+                startActivity(intent_Signup);
+                finish();//view가 쌓이는 것을 막기 위해서 finish를 사용하여 종료시켜줌.
+
             }
         });
 
@@ -142,13 +181,19 @@ public class Signup extends AppCompatActivity {
         }
         childUpdates.put("/id_list/"+inputID, postValues);
         mPostReference.updateChildren(childUpdates);
-        clearET();
     }
 
-    public void clearET () {
-        inputID = "";
-        inputPassword = "";
-        inputEmail = "";
+    public int howmanychars(String str, char chr)
+    {
+        int index;
+        int result = 0;
+        for (index = 0; index < str.length(); index++)
+        {
+            if (str.charAt(index) == chr)
+            {
+                result++;
+            }
+        }
+        return result;
     }
-
 }
