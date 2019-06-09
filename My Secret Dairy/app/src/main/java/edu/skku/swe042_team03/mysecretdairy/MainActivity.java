@@ -27,6 +27,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.cloud.language.v1.AnalyzeEntitySentimentRequest; // 엔티티위해 추가
+import com.google.cloud.language.v1.AnalyzeEntitySentimentResponse; //엔티티위해 추가
+import com.google.cloud.language.v1.Entity; //엔티티위해추가
+import com.google.cloud.language.v1.EntityMention; //엔티티위해추가
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -64,6 +68,7 @@ public class MainActivity extends AppCompatActivity {
     Intent intent;
     String day = "", subheading="", textdiary = "";
     String textdiary2 = ""; //감정분석위해추가
+    String textdiary3 = ""; //엔티티위해추가
     ArrayList<String> photodiaty;
     EditText editText1;
     EditText editText2;
@@ -79,6 +84,7 @@ public class MainActivity extends AppCompatActivity {
 
     private LanguageServiceClient mLanguageClient; //감정분석위해 추가
     private Document document2; //감정분석위해 추가
+    private Document document3;//엔티티위해 추가
     private Sentiment sentiment; //감정분석위해 추가
 
     ///////////////////추가//////////////////
@@ -188,6 +194,28 @@ public class MainActivity extends AppCompatActivity {
         document2 = Document.newBuilder().setContent(textdiary2).setType(Document.Type.PLAIN_TEXT).build(); //감정분석위해 추가
         sentiment = mLanguageClient.analyzeSentiment(document2).getDocumentSentiment();//감정분석위해 추가
         Toast.makeText(getApplicationContext(), String.valueOf(sentiment.getScore()), Toast.LENGTH_LONG).show();
+
+        TextView tex1 = (TextView)findViewById(R.id.textView);
+        tex1.setText("Score: " +String.valueOf(sentiment.getScore())+"\nMagnitude: " +String.valueOf(sentiment.getMagnitude()) );
+    }
+
+    //아래 public void on EntityClicked(View view) : 엔티티위해 추가
+    public void onEntityClicked(View view) {
+        textdiary3 = editText2.getText().toString();
+        document3 = Document.newBuilder().setContent(textdiary3).setType(Document.Type.PLAIN_TEXT).build();
+        AnalyzeEntitySentimentRequest request = AnalyzeEntitySentimentRequest.newBuilder()
+                .setDocument(document3)
+                .build();
+        AnalyzeEntitySentimentResponse response = mLanguageClient.analyzeEntitySentiment(request);
+        // Print the response
+        for (Entity entity : response.getEntitiesList()) {
+            for (EntityMention mention : entity.getMentionsList()) {
+                System.out.printf("Content: %s\n", mention.getText().getContent());
+                System.out.printf("Magnitude: %.3f\n", mention.getSentiment().getMagnitude());
+                System.out.printf("Sentiment score : %.3f\n", mention.getSentiment().getScore());
+                System.out.printf("Type: %s\n\n", mention.getType());
+            }
+        }
     }
 
     public void getFirebaseDatabase() {

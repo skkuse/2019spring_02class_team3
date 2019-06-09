@@ -63,16 +63,16 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
 
-                    <Button
-                        android:id="@+id/button2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                    <TextView
+                        android:id="@+id/textView"
+                        android:layout_width="132dp"
+                        android:layout_height="55dp"
                         android:layout_weight="1"
-                        android:text="Button" />
+                        android:text="text of sentiment" />
 
                     <Button
                         android:id="@+id/button3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="131dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:onClick="onSentimentClicked"
@@ -83,7 +83,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Add Photo" />
+                        android:onClick="onEntityClicked"
+                        android:text="Entity Sentiment" />
 
                     <Button
                         android:id="@+id/button5"
