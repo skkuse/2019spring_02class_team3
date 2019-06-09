@@ -7,96 +7,94 @@
     tools:context=".Login">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/TITLE"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="173dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="My Secret Diary"
+        android:layout_marginTop="100dp"
+        android:text="MY SECRET DIARY"
+        android:textAlignment="center"
         android:textSize="50dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="250dp"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
-        android:layout_marginBottom="11dp"
-        android:ems="10"
-        android:hint="Type your id"
-        android:inputType="text"
-        android:text=""
-        app:layout_constraintBottom_toTopOf="@+id/textView3"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView2" />
+        android:layout_marginTop="60dp"
+        android:orientation="vertical"
+        app:layout_constraintTop_toBottomOf="@id/TITLE"
+        tools:layout_editor_absoluteX="0dp">
 
-    <EditText
-        android:id="@+id/editText2"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="56dp"
-        android:ems="10"
-        android:hint="Type your passwd"
-        android:inputType="textPassword"
-        android:text=""
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/textView3"
-        app:layout_constraintTop_toBottomOf="@+id/editText1" />
+        <LinearLayout
+            android:id="@+id/INPUT_ID"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            tools:layout_editor_absoluteX="0dp">
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="145dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="55dp"
-        android:text="LOGIN"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+            <TextView
+                android:id="@+id/ID"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="ID"
+                android:textAlignment="center"
+                android:textSize="19dp"
+                android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="145dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginEnd="55dp"
-        android:text="SIGNUP"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editText2" />
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Type your id"
+                android:inputType="text" />
+        </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginBottom="292dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="ID"
-        android:textSize="19dp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editText1"
-        app:layout_constraintStart_toStartOf="parent" />
+        <LinearLayout
+            android:id="@+id/INPUT_PW"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@+id/ID">
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="50dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="55dp"
-        android:layout_marginTop="20dp"
-        android:gravity="center_horizontal|center_vertical"
-        android:text="PW"
-        android:textSize="19dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/editText2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+            <TextView
+                android:id="@+id/PW"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="PW"
+                android:textAlignment="center"
+                android:textSize="19dp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ems="10"
+                android:hint="Type your PW"
+                android:inputType="textPassword" />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/button1"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="LOGIN" />
+
+        <Button
+            android:id="@+id/button2"
+            android:layout_width="320dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="SIGNUP" />
+
+    </LinearLayout>
 </android.support.constraint.ConstraintLayout>

@@ -81,15 +81,17 @@ public class Login extends AppCompatActivity {
                             intent_login.putExtra("id",inputID);
                             startActivity(intent_login);
                             finish();
+                            return;
                     }
                 }
-                //Toast.makeText(Login.this, "Login Failed!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Login.this, "Login Failed!", Toast.LENGTH_SHORT).show();
             }
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
             }
         };
         mPostReference.child("id_list").addValueEventListener(postListener);
+        //Toast.makeText(Login.this, "Login Failed!", Toast.LENGTH_SHORT).show();
     }
 }
 
