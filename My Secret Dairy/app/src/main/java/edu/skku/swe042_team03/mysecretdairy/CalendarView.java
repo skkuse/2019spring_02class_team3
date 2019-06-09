@@ -1,6 +1,7 @@
 package edu.skku.swe042_team03.mysecretdairy;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -13,9 +14,12 @@ import android.view.View;
 import android.widget.DatePicker;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import java.util.Calendar;
 
 public class CalendarView extends AppCompatActivity {
+    Intent intent;
     ImageView calendar_btn;
     TextView calendar_year;
     FragmentPagerAdapter adapterViewPager;
@@ -46,6 +50,10 @@ public class CalendarView extends AppCompatActivity {
         vpPager.setClipToPadding(false);
         vpPager.setPageMargin(80);
         vpPager.setCurrentItem(month);
+
+        // 로그인 아이디 받기
+        intent = getIntent();
+        id = intent.getExtras().getString("id");
 
         calendar_btn.setOnClickListener(new View.OnClickListener() {                        // Call calendar dialog
             @Override

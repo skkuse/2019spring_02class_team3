@@ -40,6 +40,7 @@ public class TwelfthFragment extends Fragment {
         getYear = calendarView.year;
         getMonth = calendarView.month;
         getDay = calendarView.day;
+        getId = calendarView.id;
         cal.set(getYear, Calendar.DECEMBER, 1);
         dayofmonth = cal.getActualMaximum(Calendar.DATE);
         materialcalendarview = view.findViewById(R.id.calendar12);

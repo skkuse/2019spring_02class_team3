@@ -40,6 +40,7 @@ public class TenthFragment extends Fragment {
         getYear = calendarView.year;
         getMonth = calendarView.month;
         getDay = calendarView.day;
+        getId = calendarView.id;
         cal.set(getYear, Calendar.OCTOBER, 1);
         dayofmonth = cal.getActualMaximum(Calendar.DATE);
         materialcalendarview = view.findViewById(R.id.calendar10);

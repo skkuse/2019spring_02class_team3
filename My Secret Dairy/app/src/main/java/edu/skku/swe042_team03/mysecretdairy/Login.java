@@ -78,7 +78,7 @@ public class Login extends AppCompatActivity {
                     Log.d("getFirebaseDatabase", "info: " + info[0] + info[1] + info[2]);
                     if((tempID.equals((inputID))) && (tempPassword.equals((inputPassword)))){
                             intent_login = new Intent(Login.this, CalendarView.class);
-                            intent_login.putExtra("cal_year",inputID);
+                            intent_login.putExtra("id",inputID);
                             startActivity(intent_login);
                             finish();
                     }
