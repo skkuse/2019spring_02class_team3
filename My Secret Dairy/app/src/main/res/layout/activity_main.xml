@@ -84,7 +84,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:onClick="onEntityClicked"
-                        android:text="Entity Sentiment" />
+                        android:text="ADD PHOTO" />
 
                     <Button
                         android:id="@+id/button5"
@@ -131,6 +131,13 @@
                     android:ems="10"
                     android:inputType="textMultiLine"
                     android:scrollHorizontally="false" />
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp"
+                    android:scaleType="fitCenter"
+                    app:srcCompat="@color/colorPrimary" />
             </LinearLayout>
         </ScrollView>
 

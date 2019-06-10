@@ -1,14 +1,17 @@
 package edu.skku.swe042_team03.mysecretdairy;
 
 import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.provider.MediaStore;
@@ -27,6 +30,10 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.cloud.language.v1.AnalyzeEntitySentimentRequest; // 엔티티위해 추가
 import com.google.cloud.language.v1.AnalyzeEntitySentimentResponse; //엔티티위해 추가
 import com.google.cloud.language.v1.Entity; //엔티티위해추가
@@ -37,7 +44,9 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
@@ -62,7 +71,7 @@ import java.io.IOException; //감정분석위해 추가
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference mPostReference;
-    private StorageReference mStorageRef;
+    StorageReference ref;
     ImageView[] imageViews = new ImageView[100];
     ImageView imageView1;
     Intent intent;
@@ -82,12 +91,15 @@ public class MainActivity extends AppCompatActivity {
     Double latitude = 0.0;
     Weatheritem parse_data;
 
+    ImageView imageView;    //이미지
+    Uri filepath;           //이미지 경로
+    String imgName;         //이미지 이름
+
     private LanguageServiceClient mLanguageClient; //감정분석위해 추가
     private Document document2; //감정분석위해 추가
     private Document document3;//엔티티위해 추가
     private Sentiment sentiment; //감정분석위해 추가
 
-    ///////////////////추가//////////////////
     int cal_year;   // 캘린더 날짜 받을 변수
     int cal_month;   // 캘린더 날짜 받을 변수
     int cal_day;   // 캘린더 날짜 받을 변수
@@ -101,17 +113,19 @@ public class MainActivity extends AppCompatActivity {
         editText2 = (EditText)(findViewById(R.id.editText2));
         textView1 = (TextView)(findViewById(R.id.textView1));
         Button addPhoto = (Button)(findViewById(R.id.button4)) ;
+        Button savePhoto = findViewById(R.id.button5);
         Button getlocation = (Button)(findViewById(R.id.button6));
+        imageView = findViewById(R.id.imageView);
         mPostReference = FirebaseDatabase.getInstance().getReference();
-        mStorageRef = FirebaseStorage.getInstance().getReference();
 
-        /////////////추가//////////////////////////////////
         intent = getIntent();
         id = intent.getExtras().getString("id");                // id 받기
         cal_year = intent.getExtras().getInt("cal_year");    // 캘린더 날짜 받기
         cal_month = intent.getExtras().getInt("cal_month");   // 캘린더 날짜 받기
         cal_day = intent.getExtras().getInt("cal_day");    // 캘린더 날짜 받기
+        imgName = id+"_"+cal_year+cal_month+cal_day;
         textView1.setText(cal_year + "/" + cal_month + "/" + cal_day);
+        ref = FirebaseStorage.getInstance().getReference("images/" + imgName + ".png");
 
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -134,8 +148,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        getFirebaseDatabase();
+        addPhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent1 = new Intent();
+                intent1.setType("image/*");
+                intent1.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(intent1, "이미지를 선택하세요."), 1);
+            }
+        });
 
+        savePhoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                uploadFile();
+            }
+        });
+        getFirebaseDatabase();
+        Glide.with(this).load(ref).centerCrop().transition(DrawableTransitionOptions.withCrossFade()).into(imageView);
 
         getlocation.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -185,7 +215,67 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             throw new IllegalStateException("Unable to create a language client", e);
         }
+    }
 
+    // 데이뷰에 이미지 넣기
+    @Override
+    protected  void onActivityResult(int requestCode, int resultCode, Intent data) {
+        //request코드가 1이고 OK를 선택했고 data에 뭔가가 들어있다면
+        if(requestCode == 1 && resultCode == RESULT_OK) {
+            try {
+                // 선택한 이미지에서 비트맵 생성
+                imageView = findViewById(R.id.imageView);
+                filepath = data.getData();
+                Bitmap bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(),filepath);
+                // 이미지 표시
+                imageView.setImageBitmap(bitmap);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+    //upload img file
+    private void uploadFile() {
+        // 업로드할 파일이 있으면 수행
+        if(filepath != null) {
+            // 업로드 진행 Dialog 보이기
+            final ProgressDialog progressDialog = new ProgressDialog(this);
+            progressDialog.setTitle("업로드중...");
+            progressDialog.show();
+
+            //파일명 지정
+            String filename = imgName + ".png";
+
+            //storage 주소와 폴더 파일명 지정
+            StorageReference mStorageRef = FirebaseStorage.getInstance().getReference().child("images/" + filename);
+
+            mStorageRef.putFile(filepath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                @Override
+                //성공시
+                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                    progressDialog.dismiss(); //업로드 진행상자 닫기
+                    Toast.makeText(getApplicationContext(),"업로드 완료!", Toast.LENGTH_SHORT).show();
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                //실패시
+                public void onFailure(@NonNull Exception e) {
+                    progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(), "업로드 실패!", Toast.LENGTH_SHORT).show();
+                }
+            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                @Override
+                //진행중
+                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                    @SuppressWarnings("VisibleForTests")
+                    //dialog에 진행률을 퍼센트로 출력
+                            double progress = (100 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
+                    progressDialog.setMessage("Uploaded " + ((int) progress) + "% ...");
+                }
+            });
+        } else {
+
+        }
     }
 
     //아래 public void onSentimetClicked(View view) : 감정분석위해 추가
