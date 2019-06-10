@@ -80,10 +80,9 @@
 
                     <Button
                         android:id="@+id/button4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="95dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:onClick="onEntityClicked"
                         android:text="ADD PHOTO" />
 
                     <Button
@@ -109,10 +108,62 @@
 
                     <Button
                         android:id="@+id/button6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_width="140dp"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:text="Get location" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="53dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/text_entity1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:soundEffectsEnabled="true"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#9E9D24" />
+
+                    <TextView
+                        android:id="@+id/text_entity2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#9E9D24" />
+
+                    <TextView
+                        android:id="@+id/text_entity3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#9E9D24" />
+
+                    <TextView
+                        android:id="@+id/text_entity4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textAlignment="viewStart"
+                        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                        android:textColor="#9E9D24" />
+
+                    <Button
+                        android:id="@+id/button9"
+                        android:layout_width="2dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:onClick="onEntityClicked"
+                        android:text="#" />
                 </LinearLayout>
 
                 <EditText

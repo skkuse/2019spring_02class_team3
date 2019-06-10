@@ -83,6 +83,11 @@ public class MainActivity extends AppCompatActivity {
     EditText editText2;
     TextView textView1;
     TextView textView2;
+    TextView textView;//감정분석 출력값
+    TextView text_entity1; //해시태그 부분
+    TextView text_entity2; //해시태그 부분
+    TextView text_entity3; //해시태그 부분
+    TextView text_entity4; //해시태그 부분
     String countryNow = "";
     String cityNow = "";
     String weatherNow = "";
@@ -90,6 +95,7 @@ public class MainActivity extends AppCompatActivity {
     Double longitude = 0.0;
     Double latitude = 0.0;
     Weatheritem parse_data;
+    String sentiment_score; //감정분석 score값 저장위해
 
     ImageView imageView;    //이미지
     Uri filepath;           //이미지 경로
@@ -99,6 +105,10 @@ public class MainActivity extends AppCompatActivity {
     private Document document2; //감정분석위해 추가
     private Document document3;//엔티티위해 추가
     private Sentiment sentiment; //감정분석위해 추가
+
+    ArrayList<String> forTag = new ArrayList<String>(); //해시태그
+    float max_1st, max_2nd, max_3rd, max_4th; //해시태그
+    String E_1st="", E_2nd="", E_3rd="", E_4th=""; //해시태그
 
     int cal_year;   // 캘린더 날짜 받을 변수
     int cal_month;   // 캘린더 날짜 받을 변수
@@ -112,6 +122,7 @@ public class MainActivity extends AppCompatActivity {
         editText1 = (EditText)(findViewById(R.id.editText1));
         editText2 = (EditText)(findViewById(R.id.editText2));
         textView1 = (TextView)(findViewById(R.id.textView1));
+        textView = (TextView)(findViewById(R.id.textView)); // 감정분석 text
         Button addPhoto = (Button)(findViewById(R.id.button4)) ;
         Button savePhoto = findViewById(R.id.button5);
         Button getlocation = (Button)(findViewById(R.id.button6));
@@ -284,9 +295,9 @@ public class MainActivity extends AppCompatActivity {
         document2 = Document.newBuilder().setContent(textdiary2).setType(Document.Type.PLAIN_TEXT).build(); //감정분석위해 추가
         sentiment = mLanguageClient.analyzeSentiment(document2).getDocumentSentiment();//감정분석위해 추가
         Toast.makeText(getApplicationContext(), String.valueOf(sentiment.getScore()), Toast.LENGTH_LONG).show();
+        sentiment_score = String.valueOf(sentiment.getScore()); //감정분석 score값 저장위해
 
-        TextView tex1 = (TextView)findViewById(R.id.textView);
-        tex1.setText("Score: " +String.valueOf(sentiment.getScore())+"\nMagnitude: " +String.valueOf(sentiment.getMagnitude()) );
+        textView.setText("Score: " +String.valueOf(sentiment.getScore())+"\nMagnitude: " +String.valueOf(sentiment.getMagnitude()) );
     }
 
     //아래 public void on EntityClicked(View view) : 엔티티위해 추가
@@ -298,13 +309,104 @@ public class MainActivity extends AppCompatActivity {
                 .build();
         AnalyzeEntitySentimentResponse response = mLanguageClient.analyzeEntitySentiment(request);
         // Print the response
+        max_1st = 0;max_2nd=0;max_3rd=0;max_4th=0;
+        E_1st = "";E_2nd = "";E_3rd = "";E_4th = "";
         for (Entity entity : response.getEntitiesList()) {
             for (EntityMention mention : entity.getMentionsList()) {
                 System.out.printf("Content: %s\n", mention.getText().getContent());
                 System.out.printf("Magnitude: %.3f\n", mention.getSentiment().getMagnitude());
                 System.out.printf("Sentiment score : %.3f\n", mention.getSentiment().getScore());
                 System.out.printf("Type: %s\n\n", mention.getType());
+
+                float value = mention.getSentiment().getMagnitude() * mention.getSentiment().getScore();
+                float mid1,mid2;
+                String mid1_S,mid2_S;
+                int det=0;
+                if(max_1st < value){
+                    det =1;
+                    mid1 = max_1st;
+                    mid1_S = E_1st;
+                    max_1st = value;
+                    E_1st = mention.getText().getContent();
+
+                    //뒤로 미는 작업
+                    mid2 = max_2nd;
+                    mid2_S = E_2nd;
+                    max_2nd = mid1; //원래 max_1st가 max_2nd가 된다.
+                    E_2nd = mid1_S;
+                    mid1 = max_3rd;
+                    mid1_S = E_3rd;
+                    max_3rd = mid2; //원래 max_2nd가 max_3rd가 된다.
+                    E_3rd = mid2_S;
+                    max_4th = mid1; //원래 max_3rd가 max_4th가 된다.
+                    E_4th = mid1_S;
+                }
+                else if(det==0 && max_2nd < value){
+                    det = 1;
+                    mid1 = max_2nd;
+                    mid1_S = E_2nd;
+                    max_2nd = value;
+                    E_2nd = mention.getText().getContent();
+
+                    //뒤로 미는 작업
+                    mid2 = max_3rd;
+                    mid2_S = E_3rd;
+                    max_3rd = mid1; //원래 max_2nd가 max_3rd가 된다.
+                    E_3rd = mid1_S;
+                    max_4th = mid2; //원래 max_3rd가 max_4th가 된다.
+                    E_4th = mid2_S;
+                }
+                else if(det==0 && max_3rd < value){
+                    det =1;
+                    mid1 = max_3rd;
+                    mid1_S = E_3rd;
+                    max_3rd = value;
+                    E_3rd = mention.getText().getContent();
+
+                    //뒤로 미는 작업
+                    max_4th = mid1;//원래 max_3rd가 max_4th가 된다.
+                    E_4th = mid1_S;
+                }
+                else if(det==0 && max_4th < value){
+                    max_4th = value;
+                    E_4th = mention.getText().getContent();
+                }
             }
+        }
+
+        if(E_1st != ""){
+            forTag.add(E_1st);
+            System.out.printf("E_1st: %s\n",E_1st);
+        }
+        if(E_2nd !=""){
+            forTag.add(E_2nd);
+            System.out.printf("E_2nd: %s\n",E_2nd);
+        }
+        if(E_3rd != ""){
+            forTag.add(E_3rd);
+            System.out.printf("E_3rd: %s\n",E_3rd);
+        }
+        if(E_4th != "") {
+            forTag.add(E_4th);
+            System.out.printf("E_4th: %s\n", E_4th);
+        }
+
+        TextView text_e1 = (TextView)findViewById(R.id.text_entity1);
+        TextView text_e2 = (TextView)findViewById(R.id.text_entity2);
+        TextView text_e3 = (TextView)findViewById(R.id.text_entity3);
+        TextView text_e4 = (TextView)findViewById(R.id.text_entity4);
+        if(E_1st != "") {
+            text_e1.setText("#" + E_1st);
+        }
+        if(E_2nd != "") {
+            text_e2.setText("#" + E_2nd);
+        }
+        if(E_3rd != "") {
+            text_e3.setText("#" + E_3rd);
+
+        }
+        if(E_4th != "") {
+            text_e4.setText("#" + E_4th);
         }
     }
 
@@ -315,19 +417,44 @@ public class MainActivity extends AppCompatActivity {
                 for (DataSnapshot postSnapshot : dataSnapshot.getChildren()) {
                     String key = postSnapshot.getKey();
                     DailyRecord get = postSnapshot.getValue(DailyRecord.class);
-                    String[] info = {get.subheading, get.textdiary, get.countryNow, get.cityNow, get.weatherNow,get.degreeNow };
+                    String[] info = {get.subheading, get.textdiary, get.countryNow, get.cityNow, get.weatherNow,get.degreeNow
+                            , String.valueOf(get.sentiment_score),get.E_1st,get.E_2nd,get.E_3rd,get.E_4th};
                     countryNow = get.countryNow;
                     cityNow = get.cityNow;
                     weatherNow = get.weatherNow;
                     degreeNow = get.degreeNow;
+                    sentiment_score = get.sentiment_score;
+                    E_1st = get.E_1st;
+                    E_2nd = get.E_2nd;
+                    E_3rd = get.E_3rd;
+                    E_4th = get.E_4th;
                     Log.d("getFirebaseDatabase", "key: " + key);
-                    Log.d("getFirebaseDatabase", "info: " + info[0] + info[1] + info[2] + info[3] + info[4] + info[5]);
+                    Log.d("getFirebaseDatabase", "info: " + info[0] + info[1] + info[2] + info[3] + info[4] + info[5]+
+                            info[6]+info[7]+info[8]+info[9]+info[10]);
                     editText1 = (EditText)(findViewById(R.id.editText1));
                     editText2 = (EditText)(findViewById(R.id.editText2));
                     textView2 = (TextView) findViewById(R.id.textView2);
+                    textView = (TextView) findViewById(R.id.textView);
+                    text_entity1 = (TextView) findViewById(R.id.text_entity1);
+                    text_entity2 = (TextView) findViewById(R.id.text_entity2);
+                    text_entity3 = (TextView) findViewById(R.id.text_entity3);
+                    text_entity4 = (TextView) findViewById(R.id.text_entity4);
                     editText1.setText(info[0]);
                     editText2.setText(info[1]);
                     textView2.setText(" " + info[2] + " " + info[3] + "\n" + " " + info[4] + " " + info[5]);
+                    textView.setText("Sentiment\nScore: "+info[6]);
+                    if(E_1st!="") {
+                        text_entity1.setText("#" + info[7]);
+                    }
+                    if(E_2nd!="") {
+                        text_entity2.setText("#" + info[8]);
+                    }
+                    if(E_3rd!="") {
+                        text_entity3.setText("#" + info[9]);
+                    }
+                    if(E_4th!="") {
+                        text_entity4.setText("#" + info[10]);
+                    }
                 }
             }
             @Override
@@ -341,7 +468,8 @@ public class MainActivity extends AppCompatActivity {
         Map<String, Object> childUpdates = new HashMap<>();
         Map<String, Object> postValues = null;
         if(add){
-            DailyRecord post = new DailyRecord(subheading, textdiary, countryNow, cityNow, weatherNow, degreeNow);//추후 이미지 파일 연결
+            DailyRecord post = new DailyRecord(subheading, textdiary, countryNow, cityNow, weatherNow, degreeNow,
+                    sentiment_score,E_1st,E_2nd,E_3rd,E_4th);//추후 이미지 파일 연결
             postValues = post.toMap();
         }
         childUpdates.put("/" + id + "/" + day + "/record", postValues);
