@@ -125,6 +125,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:clickable="true"
                         android:soundEffectsEnabled="true"
                         android:textAlignment="viewStart"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
@@ -135,6 +136,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:clickable="true"
                         android:textAlignment="viewStart"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="#9E9D24" />
@@ -144,6 +146,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:clickable="true"
                         android:textAlignment="viewStart"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="#9E9D24" />
@@ -153,6 +156,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:clickable="true"
                         android:textAlignment="viewStart"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="#9E9D24" />

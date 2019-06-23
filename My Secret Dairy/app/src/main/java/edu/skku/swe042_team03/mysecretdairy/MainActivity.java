@@ -2,6 +2,7 @@ package edu.skku.swe042_team03.mysecretdairy;
 
 import android.Manifest;
 import android.app.ProgressDialog;
+import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -137,6 +138,64 @@ public class MainActivity extends AppCompatActivity {
         imgName = id+"_"+cal_year+cal_month+cal_day;
         textView1.setText(cal_year + "/" + cal_month + "/" + cal_day);
         ref = FirebaseStorage.getInstance().getReference("images/" + imgName + ".png");
+
+        text_entity1 = (TextView) findViewById(R.id.text_entity1);
+        text_entity2 = (TextView) findViewById(R.id.text_entity2);
+        text_entity3 = (TextView) findViewById(R.id.text_entity3);
+        text_entity4 = (TextView) findViewById(R.id.text_entity4);
+
+        //분류된 키워드를 누를시에는 그 정보들을 검색할 수 있게 해줌 - by 이창원
+        text_entity1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(text_entity1.getText().length() > 0){
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_WEB_SEARCH);
+                    intent.putExtra(SearchManager.QUERY, text_entity1.getText().toString());
+                    startActivity(intent);
+                }
+            }
+        });
+
+        text_entity2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(text_entity2.getText().length() > 0){
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_WEB_SEARCH);
+                    intent.putExtra(SearchManager.QUERY, text_entity2.getText().toString());
+                    startActivity(intent);
+                }
+            }
+        });
+
+        text_entity3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(text_entity3.getText().length() > 0){
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_WEB_SEARCH);
+                    intent.putExtra(SearchManager.QUERY, text_entity3.getText().toString());
+                    startActivity(intent);
+                }
+            }
+        });
+
+        text_entity4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(text_entity4.getText().length() > 0){
+                    Intent intent = new Intent();
+                    intent.setAction(Intent.ACTION_WEB_SEARCH);
+                    intent.putExtra(SearchManager.QUERY, text_entity4.getText().toString());
+                    startActivity(intent);
+                }
+            }
+        });
+
+
+
+
 
         button1.setOnClickListener(new View.OnClickListener() {//소제목, 날짜, 일기내용을 저장, 온클릭리스너를 통해 구현 - by 이창원
             @Override
