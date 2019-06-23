@@ -2,7 +2,7 @@ package edu.skku.swe042_team03.mysecretdairy;
 
 import java.util.HashMap;
 import java.util.Map;
-
+//implemented by 이창원
 public class DailyRecord {
     public String subheading;
     public String textdiary;

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Login">
-
+    //implemented by 이창원
     <TextView
         android:id="@+id/TITLE"
         android:layout_width="match_parent"

@@ -2,7 +2,7 @@ package edu.skku.swe042_team03.mysecretdairy;
 
 import java.util.HashMap;
 import java.util.Map;
-
+//implemented by 양희산
 public class SignupInfo {
     public String ID;
     public String Password;

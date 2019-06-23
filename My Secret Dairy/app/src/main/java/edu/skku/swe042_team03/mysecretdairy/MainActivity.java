@@ -67,7 +67,7 @@ import com.google.cloud.language.v1.LanguageServiceClient; //감정분석위해 
 import com.google.cloud.language.v1.LanguageServiceSettings; //감정분석위해 추가
 import com.google.cloud.language.v1.Sentiment; //감정분석위해 추가
 import java.io.IOException; //감정분석위해 추가
-
+//implemented by 이창원&신현호&차미경
 public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference mPostReference;

@@ -20,7 +20,7 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
 import java.util.Map;
-
+//implemented by 양희산&이창원
 public class Login extends AppCompatActivity {
 
     private DatabaseReference mPostReference;
