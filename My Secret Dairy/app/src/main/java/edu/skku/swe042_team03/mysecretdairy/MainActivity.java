@@ -145,10 +145,11 @@ public class MainActivity extends AppCompatActivity {
         text_entity4 = (TextView) findViewById(R.id.text_entity4);
 
         //분류된 키워드를 누를시에는 그 정보들을 검색할 수 있게 해줌 - by 이창원
+        //예외처리로 길이가 1보다 크며, #null이 아닌 경우에 검색하게 함.
         text_entity1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(text_entity1.getText().length() > 0){
+                if((text_entity1.getText().length() > 1) & (!text_entity1.getText().equals("#null"))){
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_WEB_SEARCH);
                     intent.putExtra(SearchManager.QUERY, text_entity1.getText().toString());
@@ -160,7 +161,7 @@ public class MainActivity extends AppCompatActivity {
         text_entity2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(text_entity2.getText().length() > 0){
+                if((text_entity2.getText().length() > 1) & (!text_entity2.getText().equals("#null"))){
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_WEB_SEARCH);
                     intent.putExtra(SearchManager.QUERY, text_entity2.getText().toString());
@@ -172,7 +173,7 @@ public class MainActivity extends AppCompatActivity {
         text_entity3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(text_entity3.getText().length() > 0){
+                if((text_entity3.getText().length() > 1) & (!text_entity3.getText().equals("#null"))){
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_WEB_SEARCH);
                     intent.putExtra(SearchManager.QUERY, text_entity3.getText().toString());
@@ -184,7 +185,7 @@ public class MainActivity extends AppCompatActivity {
         text_entity4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(text_entity4.getText().length() > 0){
+                if((text_entity4.getText().length() > 1) & (!text_entity4.getText().equals("#null"))){
                     Intent intent = new Intent();
                     intent.setAction(Intent.ACTION_WEB_SEARCH);
                     intent.putExtra(SearchManager.QUERY, text_entity4.getText().toString());
