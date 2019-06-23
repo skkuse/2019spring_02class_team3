@@ -45,7 +45,7 @@ public class Login extends AppCompatActivity {
 
         mPostReference = FirebaseDatabase.getInstance().getReference();
 
-        login.setOnClickListener(new View.OnClickListener() {
+        login.setOnClickListener(new View.OnClickListener() {//login 버튼을 누를시에, 파이어베이스와 연동하여, 그값을 비교함
             public void onClick(View view) {
 
                 inputID = ID.getText().toString();
@@ -56,7 +56,7 @@ public class Login extends AppCompatActivity {
             }
         });
 
-        signup.setOnClickListener(new View.OnClickListener() {
+        signup.setOnClickListener(new View.OnClickListener() {//sign up 버튼을 누를시에, Signup activity로 액티비티를 변환시켜줌
             public void onClick(View view) {
                 intent_signup = new Intent(Login.this, Signup.class);
                 startActivity(intent_signup);
@@ -64,7 +64,7 @@ public class Login extends AppCompatActivity {
         });
     }
 
-    public void getFirebaseDatabase() {
+    public void getFirebaseDatabase() {//id_list 아래의 모든 아이디와 아이디, 비밀번호를 비교함. return()을 사용하여, 함수의 종료를, finish()를 사용하여 actvity의 종료를 수행하였다.
         final ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {

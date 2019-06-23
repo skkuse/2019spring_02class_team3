@@ -2,14 +2,14 @@ package edu.skku.swe042_team03.mysecretdairy;
 
 import java.util.HashMap;
 import java.util.Map;
-//implemented by 이창원
+//implemented by 이창원 (데이터베이스와 통신하는 단위)
 public class DailyRecord {
-    public String subheading;
-    public String textdiary;
-    public String countryNow;
-    public String cityNow;
-    public String weatherNow;
-    public String degreeNow;
+    public String subheading;//부제목
+    public String textdiary;//일기 내용
+    public String countryNow;//현재 있는 국가
+    public String cityNow;//현재 있는 도시
+    public String weatherNow;//현재의 날씨
+    public String degreeNow;//현재의 온도
     public String sentiment_score; //감정분석
     public String E_1st,E_2nd,E_3rd,E_4th; //엔티티
     //public ArrayList<String> photodiary;//추후 이미지 파일

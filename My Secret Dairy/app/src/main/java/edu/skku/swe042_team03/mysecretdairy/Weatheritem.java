@@ -1,5 +1,5 @@
 package edu.skku.swe042_team03.mysecretdairy;
-
+//implemented by 이창원 (openweatherAPI를 사용하기 위한 class)
 public class Weatheritem {
     public Coord coord;
     public Weather[] weather;

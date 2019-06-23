@@ -138,7 +138,7 @@ public class MainActivity extends AppCompatActivity {
         textView1.setText(cal_year + "/" + cal_month + "/" + cal_day);
         ref = FirebaseStorage.getInstance().getReference("images/" + imgName + ".png");
 
-        button1.setOnClickListener(new View.OnClickListener() {
+        button1.setOnClickListener(new View.OnClickListener() {//소제목, 날짜, 일기내용을 저장, 온클릭리스너를 통해 구현 - by 이창원
             @Override
             public void onClick(View view) {
                 intent = new Intent(MainActivity.this, MainActivity.class);
@@ -175,10 +175,11 @@ public class MainActivity extends AppCompatActivity {
                 uploadFile();
             }
         });
-        getFirebaseDatabase();
+        getFirebaseDatabase();//초기화면을 위한 최초실행
+
         Glide.with(this).load(ref).centerCrop().transition(DrawableTransitionOptions.withCrossFade()).into(imageView);
 
-        getlocation.setOnClickListener(new View.OnClickListener() {
+        getlocation.setOnClickListener(new View.OnClickListener() {//날씨 정보를 최신화하기 위한 함수, asynctask를 통해 구현하였음 - by 이창원
             @Override
             public void onClick(View view) {
                 MyAsyncTask mProcessTask = new MyAsyncTask();
@@ -192,6 +193,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // 위치정보와 관룐된 함수들, toast message는 초기 시험 구동시에만 이용하였음. 핸드폰 환경에서는 network가 더 정확한 결과값을 보여, network를 이용 - by 이창원
         final LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 
         if (Build.VERSION.SDK_INT >= 23 &&
@@ -209,6 +211,7 @@ public class MainActivity extends AppCompatActivity {
 
         MyAsyncTask mProcessTask = new MyAsyncTask();
         mProcessTask.execute();
+        //위치 정보 밑, 초기 asynctask 수행
 
         //아래 try 감정분석위해 추가
         // create the language client
@@ -410,7 +413,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void getFirebaseDatabase() {
+    public void getFirebaseDatabase() {//파이어베이스에서 기존의 일기정보를 가져오는 함수 - by 이창원
         final ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -464,7 +467,7 @@ public class MainActivity extends AppCompatActivity {
         mPostReference.child("/" + id).child("/" + cal_year).child("/" + cal_month).child("/" + cal_day).child("/").addValueEventListener(postListener);
     }
 
-    public void postFirebaseDatabase(boolean add){
+    public void postFirebaseDatabase(boolean add){//데이터베이스에 일기의 내용을 저장하는 함수, 이후 감정기능 분석의 결과물도 함께 추가되었음 - by 이창원
         Map<String, Object> childUpdates = new HashMap<>();
         Map<String, Object> postValues = null;
         if(add){
@@ -477,13 +480,13 @@ public class MainActivity extends AppCompatActivity {
         clearC();
     }
 
-    public void clearC () {
+    public void clearC () {//activity가 재시작되므로 큰 영향은 없으나, 초기 구현 밑 완성도를 위해 그대로 둠. - by 이창원
         subheading = "";
         textdiary = "";
         //photodiaty.clear();//추후 이미지 파일 연결
     }
 
-    final LocationListener networkLocationListener = new LocationListener() {
+    final LocationListener networkLocationListener = new LocationListener() {//네트워크를 통해 위치 정보를 가져오는 함수, - by 이창원
         @Override
         public void onLocationChanged(Location location) {
             String provider = location.getProvider();
@@ -501,7 +504,7 @@ public class MainActivity extends AppCompatActivity {
         public void onProviderDisabled(String provider) {}
     };
 
-    final LocationListener gpsLocationListener = new LocationListener() {
+    final LocationListener gpsLocationListener = new LocationListener() {//gps를 통해 위치 정보를 가져오는 함수, 실제 핸드폰에서 사용시 네트워크를 통한 결과값에 비해 반응이 느려 네트워크만을 사용 - by 이창원
         public void onLocationChanged(Location location) {
             String provider = location.getProvider();
             longitude = location.getLongitude();
@@ -516,7 +519,7 @@ public class MainActivity extends AppCompatActivity {
         public void onProviderDisabled(String provider) {}
     };
 
-    public class MyAsyncTask extends AsyncTask<String, Void, Weatheritem> {
+    public class MyAsyncTask extends AsyncTask<String, Void, Weatheritem> {//위치정보등은 asynctask를 통해서 구현했음. 위치정보 날씨정보 모두 main thread가 아닌 다른 thread에서 이루어져야 했기 떄문임. //네트워크를 통해 위치 정보를 가져오는 함수, - by 이창원
         OkHttpClient client = new OkHttpClient();
         @Override
         protected void onPreExecute() {
