@@ -73,8 +73,6 @@ public class MainActivity extends AppCompatActivity {
 
     private DatabaseReference mPostReference;
     StorageReference ref;
-    ImageView[] imageViews = new ImageView[100];
-    ImageView imageView1;
     Intent intent;
     String day = "", subheading="", textdiary = "";
     String textdiary2 = ""; //감정분석위해추가
@@ -125,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
         textView1 = (TextView)(findViewById(R.id.textView1));
         textView = (TextView)(findViewById(R.id.textView)); // 감정분석 text
         Button addPhoto = (Button)(findViewById(R.id.button4)) ;
-        Button savePhoto = findViewById(R.id.button5);
         Button getlocation = (Button)(findViewById(R.id.button6));
         Button viewChart = (Button)findViewById(R.id.Chart);
         imageView = findViewById(R.id.imageView);
@@ -138,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         cal_day = intent.getExtras().getInt("cal_day");    // 캘린더 날짜 받기
         imgName = id+"_"+cal_year+cal_month+cal_day;
         textView1.setText(cal_year + "/" + cal_month + "/" + cal_day);
-        ref = FirebaseStorage.getInstance().getReference("images/" + imgName + ".png");
+        ref = FirebaseStorage.getInstance().getReference("images/" + imgName);
 
         text_entity1 = (TextView) findViewById(R.id.text_entity1);
         text_entity2 = (TextView) findViewById(R.id.text_entity2);
@@ -210,7 +207,7 @@ public class MainActivity extends AppCompatActivity {
         button1.setOnClickListener(new View.OnClickListener() {//소제목, 날짜, 일기내용을 저장, 온클릭리스너를 통해 구현 - by 이창원
             @Override
             public void onClick(View view) {
-                intent = new Intent(MainActivity.this, MainActivity.class);
+                intent = new Intent(MainActivity.this, CalendarView.class);
                 intent.putExtra("cal_year",cal_year);
                 intent.putExtra("cal_month",cal_month);
                 intent.putExtra("cal_day",cal_day);
@@ -221,6 +218,7 @@ public class MainActivity extends AppCompatActivity {
                 if ((subheading.length() + day.length() +textdiary.length()) < 5) {
                     Toast.makeText(MainActivity.this, "공란을 채워주세요.", Toast.LENGTH_SHORT).show();
                 } else {
+                    uploadFile();
                     postFirebaseDatabase(true);
                     startActivity(intent);
                     finish();//view가 쌓이는 것을 막기 위해서 finish를 사용하여 종료시켜줌.
@@ -228,7 +226,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        addPhoto.setOnClickListener(new View.OnClickListener() {
+        addPhoto.setOnClickListener(new View.OnClickListener() {    //코드 by 신현호
             @Override
             public void onClick(View v) {
                 Intent intent1 = new Intent();
@@ -237,16 +235,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(Intent.createChooser(intent1, "이미지를 선택하세요."), 1);
             }
         });
-
-        savePhoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadFile();
-            }
-        });
         getFirebaseDatabase();//초기화면을 위한 최초실행
-
-        Glide.with(this).load(ref).centerCrop().transition(DrawableTransitionOptions.withCrossFade()).into(imageView);
+        Glide.with(this).load(ref).centerInside().transition(DrawableTransitionOptions.withCrossFade()).into(imageView);
+        //파이어베이스의 사진 불러오기 //코드 by 신현호
 
         getlocation.setOnClickListener(new View.OnClickListener() {//날씨 정보를 최신화하기 위한 함수, asynctask를 통해 구현하였음 - by 이창원
             @Override
@@ -300,7 +291,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    // 데이뷰에 이미지 넣기
+    // 데이뷰에 이미지 넣기 //코드 by 신현호
     @Override
     protected  void onActivityResult(int requestCode, int resultCode, Intent data) {
         //request코드가 1이고 OK를 선택했고 data에 뭔가가 들어있다면
@@ -317,47 +308,13 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     }
-    //upload img file
+    //upload img file //코드 by 신현호
     private void uploadFile() {
         // 업로드할 파일이 있으면 수행
         if(filepath != null) {
-            // 업로드 진행 Dialog 보이기
-            final ProgressDialog progressDialog = new ProgressDialog(this);
-            progressDialog.setTitle("업로드중...");
-            progressDialog.show();
-
-            //파일명 지정
-            String filename = imgName + ".png";
-
             //storage 주소와 폴더 파일명 지정
-            StorageReference mStorageRef = FirebaseStorage.getInstance().getReference().child("images/" + filename);
-
-            mStorageRef.putFile(filepath).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-                @Override
-                //성공시
-                public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                    progressDialog.dismiss(); //업로드 진행상자 닫기
-                    Toast.makeText(getApplicationContext(),"업로드 완료!", Toast.LENGTH_SHORT).show();
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                //실패시
-                public void onFailure(@NonNull Exception e) {
-                    progressDialog.dismiss();
-                    Toast.makeText(getApplicationContext(), "업로드 실패!", Toast.LENGTH_SHORT).show();
-                }
-            }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
-                @Override
-                //진행중
-                public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
-                    @SuppressWarnings("VisibleForTests")
-                    //dialog에 진행률을 퍼센트로 출력
-                            double progress = (100 * taskSnapshot.getBytesTransferred()) / taskSnapshot.getTotalByteCount();
-                    progressDialog.setMessage("Uploaded " + ((int) progress) + "% ...");
-                }
-            });
-        } else {
-
+            StorageReference mStorageRef = FirebaseStorage.getInstance().getReference().child("images/" + imgName);
+            mStorageRef.putFile(filepath);
         }
     }
 

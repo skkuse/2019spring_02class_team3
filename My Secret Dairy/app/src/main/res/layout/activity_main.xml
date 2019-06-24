@@ -92,13 +92,6 @@
                         android:text="ADD PHOTO"
                         android:fontFamily="@font/aritasansbold"/>
 
-                    <Button
-                        android:id="@+id/button5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:text="Save Photo"
-                        android:fontFamily="@font/aritasansbold"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -232,8 +225,7 @@
                     android:id="@+id/imageView"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"
-                    android:scaleType="fitCenter"
-                    app:srcCompat="@color/colorPrimary" />
+                    android:scaleType="centerInside" />
             </LinearLayout>
         </ScrollView>
 

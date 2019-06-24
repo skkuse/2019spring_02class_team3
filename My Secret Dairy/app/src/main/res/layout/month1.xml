@@ -8,7 +8,7 @@
     android:elevation="10dp"
     android:background="@drawable/rounded"
     android:layout_gravity="center">
-
+    //코드 by 신현호
     <TextView
         android:id="@+id/text_num1" android:text="1"
         app:layout_constraintLeft_toLeftOf="parent"

@@ -6,7 +6,7 @@
     android:elevation="10dp"
     android:background="@drawable/rounded"
     android:layout_gravity="center">
-
+    //코드 by 신현호
     <TextView
         android:id="@+id/text_num5" android:text="5"
         app:layout_constraintLeft_toLeftOf="parent"

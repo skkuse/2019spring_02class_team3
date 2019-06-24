@@ -1,5 +1,5 @@
 package edu.skku.swe042_team03.mysecretdairy;
-
+// 코드 by 신현호
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Color;

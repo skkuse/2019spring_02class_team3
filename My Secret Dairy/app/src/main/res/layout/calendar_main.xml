@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -6,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
+    //코드 by 신현호
     <TextView
         android:id="@+id/tv_calendar_year"
         android:layout_width="wrap_content"

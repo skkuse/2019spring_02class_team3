@@ -1,5 +1,6 @@
 package edu.skku.swe042_team03.mysecretdairy;
-
+//코드 by 신현호
+//Glide 모듈을 사용하기 위한 클래스
 import android.content.Context;
 
 import com.bumptech.glide.Glide;
