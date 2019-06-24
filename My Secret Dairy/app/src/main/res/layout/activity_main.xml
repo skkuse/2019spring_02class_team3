@@ -120,44 +120,53 @@
                     android:layout_height="53dp"
                     android:orientation="horizontal">
 
+                    //밑의 TextView, 해시태그, 밀림현상으로 #버튼 가림현상 해결
                     <TextView
                         android:id="@+id/text_entity1"
-                        android:layout_width="wrap_content"
+                        android:layout_width="20dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:clickable="true"
+                        android:singleLine="true"
+                        android:ellipsize="end"
                         android:soundEffectsEnabled="true"
-                        android:textAlignment="viewStart"
+                        android:gravity="center|left"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="#9E9D24" />
 
                     <TextView
                         android:id="@+id/text_entity2"
-                        android:layout_width="wrap_content"
+                        android:layout_width="20dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:clickable="true"
-                        android:textAlignment="viewStart"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:gravity="center|left"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="#9E9D24" />
 
                     <TextView
                         android:id="@+id/text_entity3"
-                        android:layout_width="wrap_content"
+                        android:layout_width="20dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:clickable="true"
-                        android:textAlignment="viewStart"
+                        android:singleLine="true"
+                        android:ellipsize="end"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="#9E9D24" />
+                        android:textColor="#9E9D24"
+                        android:gravity="center|left"/>
 
                     <TextView
                         android:id="@+id/text_entity4"
-                        android:layout_width="wrap_content"
+                        android:layout_width="20dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
+                        android:singleLine="true"
                         android:clickable="true"
-                        android:textAlignment="viewStart"
+                        android:ellipsize="end"
+                        android:gravity="center|left"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="#9E9D24" />
 

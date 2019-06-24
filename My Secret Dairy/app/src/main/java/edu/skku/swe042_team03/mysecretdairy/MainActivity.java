@@ -486,11 +486,11 @@ public class MainActivity extends AppCompatActivity {
                     cityNow = get.cityNow;
                     weatherNow = get.weatherNow;
                     degreeNow = get.degreeNow;
-                    sentiment_score = get.sentiment_score;
-                    E_1st = get.E_1st;
-                    E_2nd = get.E_2nd;
-                    E_3rd = get.E_3rd;
-                    E_4th = get.E_4th;
+                    sentiment_score = get.sentiment_score;//감정분석 점수 추가로인해 데이터베이스 구조 변경
+                    E_1st = get.E_1st; //해시태그 추가로인해 데이터베이스 구조 변경
+                    E_2nd = get.E_2nd;  //해시태그 추가로인해 데이터베이스 구조 변경
+                    E_3rd = get.E_3rd; //해시태그 추가로인해 데이터베이스 구조 변경
+                    E_4th = get.E_4th; //해시태그 추가로인해 데이터베이스 구조 변경
                     Log.d("getFirebaseDatabase", "key: " + key);
                     Log.d("getFirebaseDatabase", "info: " + info[0] + info[1] + info[2] + info[3] + info[4] + info[5]+
                             info[6]+info[7]+info[8]+info[9]+info[10]);
@@ -498,13 +498,13 @@ public class MainActivity extends AppCompatActivity {
                     editText2 = (EditText)(findViewById(R.id.editText2));
                     textView2 = (TextView) findViewById(R.id.textView2);
                     textView = (TextView) findViewById(R.id.textView);
-                    text_entity1 = (TextView) findViewById(R.id.text_entity1);
+                    text_entity1 = (TextView) findViewById(R.id.text_entity1); //해시태그 추가로인해 데이터베이스 구조 변경
                     text_entity2 = (TextView) findViewById(R.id.text_entity2);
                     text_entity3 = (TextView) findViewById(R.id.text_entity3);
                     text_entity4 = (TextView) findViewById(R.id.text_entity4);
                     editText1.setText(info[0]);
                     editText2.setText(info[1]);
-                    textView2.setText(" " + info[2] + " " + info[3] + "\n" + " " + info[4] + " " + info[5]);
+                    textView2.setText(" " + info[2] + " " + info[3] + "\n" + " " + info[4] + " " + info[5]);//해시태그 분석결과 출력
                     textView.setText("Sentiment\nScore: "+info[6]);
                     if(E_1st!="") {
                         text_entity1.setText("#" + info[7]);
@@ -532,7 +532,7 @@ public class MainActivity extends AppCompatActivity {
         Map<String, Object> postValues = null;
         if(add){
             DailyRecord post = new DailyRecord(subheading, textdiary, countryNow, cityNow, weatherNow, degreeNow,
-                    sentiment_score,E_1st,E_2nd,E_3rd,E_4th);//추후 이미지 파일 연결
+                    sentiment_score,E_1st,E_2nd,E_3rd,E_4th);//감정분석,해시태그 결과로 인해 데이터구조 변경
             postValues = post.toMap();
         }
         childUpdates.put("/" + id + "/" + day + "/record", postValues);
