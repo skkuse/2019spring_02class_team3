@@ -49,6 +49,7 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.9.0'                          // API for loading image from Firebase
     annotationProcessor 'com.github.bumptech.glide:compiler:4.9.0'                  // API for loading image from Firebase
     implementation 'com.firebaseui:firebase-ui-storage:3.1.0'                       // API for loading image from Firebase
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.0.2'  // 차트 Drawing용 API
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.google.firebase:firebase-database:16.0.1'
     implementation 'com.google.firebase:firebase-storage:16.0.1'

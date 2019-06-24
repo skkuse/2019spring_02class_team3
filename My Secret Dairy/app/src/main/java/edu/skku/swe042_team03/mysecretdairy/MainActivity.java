@@ -127,6 +127,7 @@ public class MainActivity extends AppCompatActivity {
         Button addPhoto = (Button)(findViewById(R.id.button4)) ;
         Button savePhoto = findViewById(R.id.button5);
         Button getlocation = (Button)(findViewById(R.id.button6));
+        Button viewChart = (Button)findViewById(R.id.Chart);
         imageView = findViewById(R.id.imageView);
         mPostReference = FirebaseDatabase.getInstance().getReference();
 
@@ -194,6 +195,14 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        viewChart.setOnClickListener(new View.OnClickListener() { // Chart View로 이동.- 양희산
+            @Override
+            public void onClick(View view) {
+                intent = new Intent(MainActivity.this, MySecretChart.class);
+                intent.putExtra("id",id);
+                startActivity(intent);
+            }
+        });
 
 
 

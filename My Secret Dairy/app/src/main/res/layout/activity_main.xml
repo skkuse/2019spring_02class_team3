@@ -131,6 +131,7 @@
                     android:orientation="horizontal">
 
                     //밑의 TextView, 해시태그, 밀림현상으로 #버튼 가림현상 해결
+
                     <TextView
                         android:id="@+id/text_entity1"
                         android:layout_width="20dp"
@@ -145,6 +146,8 @@
                         android:textColor="#9E9D24"
                         android:fontFamily="@font/aritasanssemibold"
                         android:textSize="18dp"/>
+
+
 
                     <TextView
                         android:id="@+id/text_entity2"
@@ -187,6 +190,13 @@
                         android:textColor="#9E9D24"
                         android:fontFamily="@font/aritasanssemibold"
                         android:textSize="18dp"/>
+
+                    <Button
+                        android:id="@+id/Chart"
+                        android:layout_width="63dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:text="View Chart" />
 
                     <Button
                         android:id="@+id/button9"
