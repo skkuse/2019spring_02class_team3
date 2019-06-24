@@ -29,14 +29,16 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:textSize="20sp"
-                android:text="0523" />
+                android:text="0523"
+                android:fontFamily="@font/aritasansbold"/>
 
             <Button
                 android:id="@+id/button1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="SAVE" />
+                android:text="SAVE"
+                android:fontFamily="@font/aritasansbold"/>
         </LinearLayout>
 
         <ScrollView
@@ -68,7 +70,9 @@
                         android:layout_width="132dp"
                         android:layout_height="55dp"
                         android:layout_weight="1"
-                        android:text="text of sentiment" />
+                        android:text="text of sentiment"
+                        android:fontFamily="@font/aritasanslight"
+                        android:textSize="17dp"/>
 
                     <Button
                         android:id="@+id/button3"
@@ -76,21 +80,24 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:onClick="onSentimentClicked"
-                        android:text="Analyzing Sentiment" />
+                        android:text="Analyzing Sentiment"
+                        android:fontFamily="@font/aritasansbold"/>
 
                     <Button
                         android:id="@+id/button4"
                         android:layout_width="95dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="ADD PHOTO" />
+                        android:text="ADD PHOTO"
+                        android:fontFamily="@font/aritasansbold"/>
 
                     <Button
                         android:id="@+id/button5"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Save Photo" />
+                        android:text="Save Photo"
+                        android:fontFamily="@font/aritasansbold"/>
                 </LinearLayout>
 
                 <LinearLayout
@@ -104,14 +111,16 @@
                         android:layout_height="match_parent"
                         android:layout_weight="4"
                         android:text="Weather"
-                        android:textSize="20sp" />
+                        android:textSize="20sp"
+                        android:fontFamily="@font/aritasanslight"/>
 
                     <Button
                         android:id="@+id/button6"
                         android:layout_width="140dp"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:text="Get location" />
+                        android:text="Get location"
+                        android:fontFamily="@font/aritasansbold"/>
 
                 </LinearLayout>
 
@@ -132,7 +141,9 @@
                         android:soundEffectsEnabled="true"
                         android:gravity="center|left"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="#9E9D24" />
+                        android:textColor="#9E9D24"
+                        android:fontFamily="@font/aritasanssemibold"
+                        android:textSize="18dp"/>
 
                     <TextView
                         android:id="@+id/text_entity2"
@@ -144,7 +155,9 @@
                         android:ellipsize="end"
                         android:gravity="center|left"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="#9E9D24" />
+                        android:textColor="#9E9D24"
+                        android:fontFamily="@font/aritasanssemibold"
+                        android:textSize="18dp"/>
 
                     <TextView
                         android:id="@+id/text_entity3"
@@ -156,7 +169,9 @@
                         android:ellipsize="end"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                         android:textColor="#9E9D24"
-                        android:gravity="center|left"/>
+                        android:gravity="center|left"
+                        android:fontFamily="@font/aritasanssemibold"
+                        android:textSize="18dp"/>
 
                     <TextView
                         android:id="@+id/text_entity4"
@@ -168,7 +183,9 @@
                         android:ellipsize="end"
                         android:gravity="center|left"
                         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                        android:textColor="#9E9D24" />
+                        android:textColor="#9E9D24"
+                        android:fontFamily="@font/aritasanssemibold"
+                        android:textSize="18dp"/>
 
                     <Button
                         android:id="@+id/button9"
@@ -185,7 +202,9 @@
                     android:layout_height="wrap_content"
                     android:hint="Sub Heading"
                     android:ems="10"
-                    android:inputType="textPersonName" />
+                    android:inputType="textPersonName"
+                    android:fontFamily="@font/aritasanssemibold"
+                    android:textSize="20dp"/>
 
                 <EditText
                     android:id="@+id/editText2"
@@ -194,7 +213,9 @@
                     android:hint="Text Diary"
                     android:ems="10"
                     android:inputType="textMultiLine"
-                    android:scrollHorizontally="false" />
+                    android:scrollHorizontally="false"
+                    android:fontFamily="@font/aritasansmedium"
+                    android:textSize="20dp"/>
 
                 <ImageView
                     android:id="@+id/imageView"
